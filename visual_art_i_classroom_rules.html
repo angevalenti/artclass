@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Inter, -apple-system, sans-serif; line-height: 1.6; }
+  
+  .rules-container {
+    background: #F5F5F5;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #3D7A8C;
+    padding-bottom: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1B263B;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header p {
+    font-size: 14px;
+    color: #704860;
+    font-weight: 500;
+  }
+  
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .rule-card {
+    background: white;
+    border-left: 4px solid #9D6B52;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .rule-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1B263B;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .rule-card.phone {
+    border-left-color: #D49D00;
+  }
+  
+  .rule-card.respect {
+    border-left-color: #3D7A8C;
+  }
+  
+  .rule-card.boundaries {
+    border-left-color: #704860;
+  }
+  
+  .rule-content {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.8;
+  }
+  
+  .boundary-box {
+    background: #FBEAF0;
+    border: 1px solid #704860;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 0.75rem;
+    font-size: 13px;
+    color: #3d2a40;
+    line-height: 1.6;
+  }
+  
+  .checklist-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  .checklist-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1B263B;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #3D7A8C;
+  }
+  
+  .checklist-dos h3 {
+    border-bottom-color: #3D7A8C;
+  }
+  
+  .checklist-donts h3 {
+    border-bottom-color: #9D6B52;
+  }
+  
+  .checklist {
+    display: grid;
+    gap: 12px;
+  }
+  
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: #F5F5F5;
+    transition: background 0.2s;
+  }
+  
+  .checklist-item:hover {
+    background: #EFEFEF;
+  }
+  
+  .checklist-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  .checklist-item label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    flex: 1;
+    padding-top: 2px;
+  }
+  
+  .checklist-item input[type="checkbox"]:checked + label {
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  .dos-item input[type="checkbox"] {
+    accent-color: #3D7A8C;
+  }
+  
+  .donts-item input[type="checkbox"] {
+    accent-color: #9D6B52;
+  }
+  
+  .emoji {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+  
+  @media print {
+    body { background: white; }
+    .rules-container { background: white; box-shadow: none; }
+  }
+</style>
+
+<div class="rules-container">
+  <div class="header">
+    <h1>🎨 Visual Art I Studio Rules</h1>
+    <p>Let's build a creative, respectful space together</p>
+  </div>
+  
+  <div class="rules-grid">
+    <div class="rule-card phone">
+      <h2><span class="emoji">📱</span> No Phone Use</h2>
+      <div class="rule-content">
+        Your phone stays in your backpack or locker during class. This keeps you focused on your creative work and respects the learning environment for everyone.
+      </div>
+    </div>
+    
+    <div class="rule-card respect">
+      <h2><span class="emoji">🤝</span> Respect Everyone</h2>
+      <div class="rule-content">
+        Treat this classroom and your classmates with kindness. Listen when others are speaking. Don't mock work. Be someone people want to create with.
+      </div>
+    </div>
+    
+    <div class="rule-card boundaries">
+      <h2><span class="emoji">⚠️</span> Professional Boundaries</h2>
+      <div class="rule-content">
+        <strong>I'm your teacher, not your friend or therapist.</strong> I care about you and want you to succeed, but I have professional limits. If you're struggling, I'll help connect you with a counselor or trusted adult who can really help. My job is to teach you art and help you find your creative voice.
+      </div>
+    </div>
+  </div>
+  
+  <div class="checklist-section checklist-dos">
+    <h3>✅ DO's — Build This Culture</h3>
+    <div class="checklist">
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do1">
+        <label for="do1">Show up on time and ready to create</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do2">
+        <label for="do2">Clean up your supplies and workspace before leaving</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do3">
+        <label for="do3">Ask questions if you're confused or need help</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do4">
+        <label for="do4">Try techniques even if they feel uncomfortable at first</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do5">
+        <label for="do5">Give honest, kind feedback when peers ask for it</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do6">
+        <label for="do6">Celebrate when classmates finish a project</label>
+      </div>
+      <div class="checklist-item dos-item">
+        <input type="checkbox" id="do7">
+        <label for="do7">Tell me if you're struggling so I can help</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="checklist-section checklist-donts">
+    <h3>❌ DON'Ts — What Derails Us</h3>
+    <div class="checklist">
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont1">
+        <label for="dont1">Don't use your phone or listen to music on devices</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont2">
+        <label for="dont2">Don't be late or leave early without permission</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont3">
+        <label for="dont3">Don't interrupt classmates when they're working or sharing</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont4">
+        <label for="dont4">Don't mock other people's work or ideas</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont5">
+        <label for="dont5">Don't touch supplies or projects that aren't yours</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont6">
+        <label for="dont6">Don't use materials carelessly or leave messes</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont7">
+        <label for="dont7">Don't treat me like a friend or try to overshare personal problems</label>
+      </div>
+      <div class="checklist-item donts-item">
+        <input type="checkbox" id="dont8">
+        <label for="dont8">Don't assume silence means everything is fine — speak up if you need support</label>
+      </div>
+    </div>
+  </div>
+</div>
