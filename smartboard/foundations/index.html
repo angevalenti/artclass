@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visual Art Foundations — Classroom Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+
+  <style>
+    body { margin: 0; background: #faf8f6; }
+  </style>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const COLORS = {
+      bg: "#faf8f6",
+      bgWarm: "#f5f0ec",
+      surface: "#ffffff",
+      surfaceHover: "#f9f5f2",
+      border: "rgba(60, 50, 40, 0.08)",
+      borderHover: "rgba(60, 50, 40, 0.15)",
+      text: "#2a2520",
+      textSoft: "#5c534a",
+      textMuted: "rgba(60, 50, 40, 0.45)",
+      purple: "#9b6dff",
+      purpleSoft: "#ece4ff",
+      pink: "#e8659a",
+      pinkSoft: "#fce4ef",
+      sky: "#4da8da",
+      skySoft: "#e0f1fa",
+      mint: "#3dbf8e",
+      mintSoft: "#ddf5eb",
+      coral: "#e88358",
+      coralSoft: "#fde8df",
+      gold: "#d4a030",
+      goldSoft: "#faf0d5",
+    };
+
+    const PROJECTS = [
+      {
+        id: "sketchbook",
+        num: "01",
+        title: "DIY Coptic-Bound Sketchbook",
+        subtitle: "Build your own tool before you make your first mark.",
+        accent: COLORS.purple,
+        accentSoft: COLORS.purpleSoft,
+        gradientFrom: "rgba(155, 109, 255, 0.08)",
+        gradientTo: "rgba(232, 101, 154, 0.06)",
+        duration: "~2 weeks",
+        essential: "What does it mean to build the thing you create with?",
+        overview:
+          "Students construct a hand-bound sketchbook using the coptic stitch method — an ancient bookbinding technique that allows pages to lay completely flat. This sketchbook becomes their primary tool for the rest of the year. The project introduces craftsmanship, patience, and the idea that artists don't just use tools — they make them.",
+        materials: [
+          "Chipboard (cut to cover size)",
+          "Mixed-weight paper (cut to page size)",
+          "Waxed linen thread",
+          "Bookbinding needles (curved & straight)",
+          "Bone folder",
+          "Awl",
+          "Ruler & pencil",
+          "Cutting mat & X-Acto knife",
+          "Binder clips",
+          "Decorative paper or fabric (optional, for covers)",
+        ],
+        days: [
+          {
+            day: "Day 1",
+            title: "Intro + Inspiration",
+            detail:
+              "What is a sketchbook? Why do artists keep them? Look at examples from Leonardo da Vinci, Frida Kahlo, and contemporary artists. Discuss: what's the difference between a sketchbook you bought and one you built? Introduce coptic binding — show finished examples. Students handle sample books.",
+            image: null,
+            imageHint: "Finished coptic-bound sketchbook examples on display table",
+          },
+          {
+            day: "Day 2",
+            title: "Measure, Cut, Fold",
+            detail:
+              "Demonstrate proper measuring and cutting technique. Students measure and cut chipboard covers and paper signatures (groups of 4–5 nested sheets). Fold signatures using bone folder. Emphasize precision — a sloppy cut means a sloppy book.",
+            image: null,
+            imageHint: "Hands measuring and cutting chipboard with ruler and X-Acto",
+          },
+          {
+            day: "Day 3",
+            title: "Punch + Prep",
+            detail:
+              "Create a punch template. Students use the awl to punch sewing holes through each signature and both covers. Align everything with binder clips. Review: all holes must line up or the binding won't work.",
+            image: null,
+            imageHint: "Awl punching through aligned signatures with binder clips",
+          },
+          {
+            day: "Day 4–5",
+            title: "Coptic Stitch Binding",
+            detail:
+              "Watch The Frugal Crafter coptic binding tutorial as a class. Teacher demonstrates the first signature attachment live. Students begin sewing — first signature to back cover, then chaining signatures together. Circulate and troubleshoot tension issues. This is the hardest part — patience is the skill.",
+            image: null,
+            imageHint: "Close-up of coptic stitch chain linking signatures together",
+          },
+          {
+            day: "Day 6",
+            title: "Finish Binding + Cover Design",
+            detail:
+              "Complete sewing. Attach front cover. Students design and personalize their covers — collage, drawing, painting, or fabric wrap. The cover is their first creative decision of the year.",
+            image: null,
+            imageHint: "Student customizing sketchbook cover with collage and paint",
+          },
+          {
+            day: "Day 7",
+            title: "First Entry + Reflection",
+            detail:
+              "Sketchbooks are done. Students make their first entry: a self-portrait or free drawing on page one. Written reflection: What was the hardest part? What would you do differently? How does it feel to use something you built?",
+            image: null,
+            imageHint: "Open sketchbook showing first drawing entry",
+          },
+        ],
+        artists: [
+          { name: "Leonardo da Vinci", note: "The original sketchbook keeper — invention, observation, and curiosity on every page" },
+          { name: "Frida Kahlo", note: "Diary as art — raw, personal, unapologetic" },
+          { name: "Jean-Michel Basquiat", note: "Notebooks as creative engine — messy, fast, alive" },
+        ],
+        videos: [
+          { title: "Coptic Stitch Binding Tutorial", source: "The Frugal Crafter", note: "Primary instructional reference — watch as a class on Day 4" },
+        ],
+        vocabulary: [
+          { term: "Coptic Stitch", def: "An ancient binding method using a chain stitch that allows a book to open flat" },
+          { term: "Signature", def: "A group of nested pages folded together to form one section of a book" },
+          { term: "Bone Folder", def: "A flat tool used to create clean, sharp folds in paper" },
+          { term: "Awl", def: "A pointed tool used to punch holes through paper and board" },
+          { term: "Craftsmanship", def: "Skill and care in making something — the difference between done and done well" },
+        ],
+      },
+      {
+        id: "self-portrait",
+        num: "02",
+        title: "Charcoal Self-Portrait",
+        subtitle: "See yourself. Really see yourself.",
+        accent: COLORS.pink,
+        accentSoft: COLORS.pinkSoft,
+        gradientFrom: "rgba(232, 101, 154, 0.08)",
+        gradientTo: "rgba(155, 109, 255, 0.05)",
+        duration: "~3 weeks",
+        essential: "What do you see when you actually look?",
+        overview: "Students create a large-scale charcoal self-portrait, learning to observe proportion, value, and detail. This project builds foundational drawing skills while pushing students to slow down and really look.",
+        materials: [], days: [], artists: [], videos: [], vocabulary: [],
+      },
+      {
+        id: "concert-poster",
+        num: "03",
+        title: "Concert Poster / Album Cover",
+        subtitle: "Design something people would actually hang on their wall.",
+        accent: COLORS.sky,
+        accentSoft: COLORS.skySoft,
+        gradientFrom: "rgba(77, 168, 218, 0.08)",
+        gradientTo: "rgba(61, 191, 142, 0.05)",
+        duration: "~3 weeks",
+        essential: "How does visual design make you feel something before you read a single word?",
+        overview: "Students design a hand-drawn concert poster or album cover for a real or imagined artist, exploring typography, composition, color theory, and the relationship between music and visual art.",
+        materials: [], days: [], artists: [], videos: [], vocabulary: [],
+      },
+      {
+        id: "painted-sneaker",
+        num: "04",
+        title: "Painted Sneaker",
+        subtitle: "Wearable art. Function meets expression.",
+        accent: COLORS.mint,
+        accentSoft: COLORS.mintSoft,
+        gradientFrom: "rgba(61, 191, 142, 0.08)",
+        gradientTo: "rgba(77, 168, 218, 0.05)",
+        duration: "~2 weeks",
+        essential: "Can everyday objects become art — and can art be something you wear?",
+        overview: "Students customize a canvas sneaker using acrylic paint, turning a functional object into a personal art piece. This project explores surface design, planning on irregular forms, and the intersection of art and fashion.",
+        materials: [], days: [], artists: [], videos: [], vocabulary: [],
+      },
+      {
+        id: "block-print",
+        num: "05",
+        title: "Block Print Collaborative Mural",
+        subtitle: "One print. Fifty prints. One wall.",
+        accent: COLORS.coral,
+        accentSoft: COLORS.coralSoft,
+        gradientFrom: "rgba(232, 131, 88, 0.08)",
+        gradientTo: "rgba(212, 160, 48, 0.05)",
+        duration: "~3 weeks",
+        essential: "What happens when individual art becomes collective?",
+        overview: "Each student carves and prints a block that becomes one tile in a large-scale collaborative mural. The project teaches printmaking technique while building toward a permanent installation in the school.",
+        materials: [], days: [], artists: [], videos: [], vocabulary: [],
+      },
+      {
+        id: "hallway-mural",
+        num: "06",
+        title: "Hallway Mural Capstone",
+        subtitle: "Leave your mark. Literally.",
+        accent: COLORS.gold,
+        accentSoft: COLORS.goldSoft,
+        gradientFrom: "rgba(212, 160, 48, 0.08)",
+        gradientTo: "rgba(232, 131, 88, 0.05)",
+        duration: "~4 weeks",
+        essential: "What does it mean to make art that belongs to a place?",
+        overview: "The culminating project: students collaborate to design and paint a large-scale mural in a school hallway. This capstone brings together every skill learned throughout the year — drawing, painting, design, collaboration — and results in permanent, visible art that transforms the building.",
+        materials: [], days: [], artists: [], videos: [], vocabulary: [],
+      },
+    ];
+
+    function Nav({ current, onNavigate }) {
+      return (
+        <nav style={{
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+          background: "rgba(250, 248, 246, 0.88)",
+          backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)",
+          borderBottom: `1px solid ${COLORS.border}`,
+          padding: "0 2rem", display: "flex", alignItems: "center", height: 58, gap: "2rem",
+        }}>
+          <div onClick={() => onNavigate("home")} style={{
+            fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.2rem",
+            cursor: "pointer", color: COLORS.text, whiteSpace: "nowrap",
+          }}>
+            Visual Art Foundations
+          </div>
+          <div style={{
+            display: "flex", gap: "0.3rem", overflowX: "auto", flex: 1,
+            scrollbarWidth: "none",
+          }}>
+            {PROJECTS.map((p) => (
+              <button key={p.id} onClick={() => onNavigate(p.id)} style={{
+                background: current === p.id ? p.accentSoft : "transparent",
+                border: "none",
+                color: current === p.id ? p.accent : COLORS.textMuted,
+                padding: "0.4rem 0.7rem", borderRadius: 20,
+                fontSize: "0.72rem", fontFamily: "'Space Grotesk', sans-serif",
+                cursor: "pointer", whiteSpace: "nowrap",
+                fontWeight: current === p.id ? 600 : 400, transition: "all 0.2s",
+              }}>
+                {p.num}
+              </button>
+            ))}
+          </div>
+        </nav>
+      );
+    }
+
+    function Home({ onNavigate }) {
+      return (
+        <div>
+          {/* Hero */}
+          <div style={{
+            minHeight: "100vh", display: "flex", flexDirection: "column",
+            justifyContent: "center", alignItems: "center", textAlign: "center",
+            padding: "6rem 2rem 4rem", position: "relative",
+            background: `
+              radial-gradient(ellipse at 25% 75%, rgba(155, 109, 255, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 75% 25%, rgba(232, 101, 154, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(77, 168, 218, 0.07) 0%, transparent 60%)
+            `,
+          }}>
+            {/* Floating decorative circles */}
+            <div style={{
+              position: "absolute", width: 300, height: 300, borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(155, 109, 255, 0.06) 0%, transparent 70%)",
+              top: "15%", left: "5%", pointerEvents: "none",
+            }} />
+            <div style={{
+              position: "absolute", width: 200, height: 200, borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(232, 101, 154, 0.06) 0%, transparent 70%)",
+              bottom: "20%", right: "10%", pointerEvents: "none",
+            }} />
+
+            <div style={{
+              fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase",
+              color: COLORS.purple, marginBottom: "1.25rem",
+              fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+            }}>
+              NPIS Visual Arts
+            </div>
+            <h1 style={{
+              fontFamily: "'Covered By Your Grace', cursive",
+              fontSize: "clamp(2.8rem, 7vw, 5rem)", fontWeight: 400,
+              lineHeight: 1.08, maxWidth: 650, color: COLORS.text,
+            }}>
+              Visual Art{" "}
+              <span style={{
+                background: `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.pink}, ${COLORS.coral})`,
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+              }}>
+                Foundations
+              </span>
+            </h1>
+            <p style={{
+              marginTop: "1.25rem", fontSize: "1rem", color: COLORS.textSoft,
+              maxWidth: 400, lineHeight: 1.65, fontFamily: "'Space Grotesk', sans-serif",
+            }}>
+              Six projects. One year. Every piece lives in the building — not in a folder.
+            </p>
+
+            {/* Playful scroll hint */}
+            <div style={{
+              position: "absolute", bottom: "2.5rem",
+              fontSize: "0.7rem", letterSpacing: "0.15em",
+              color: COLORS.textMuted, fontFamily: "'Space Grotesk', sans-serif",
+              animation: "float 3s ease-in-out infinite",
+            }}>
+              ↓
+            </div>
+          </div>
+
+          {/* Philosophy pills */}
+          <div style={{ maxWidth: 780, margin: "0 auto", padding: "3.5rem 2rem 1rem" }}>
+            <div style={{
+              display: "flex", flexWrap: "wrap", gap: "0.6rem",
+              justifyContent: "center", marginBottom: "3.5rem",
+            }}>
+              {[
+                { label: "Art as Installation", color: COLORS.purple, bg: COLORS.purpleSoft },
+                { label: "Real-World Framing", color: COLORS.pink, bg: COLORS.pinkSoft },
+                { label: "Skill Building", color: COLORS.sky, bg: COLORS.skySoft },
+                { label: "Every Wall is a Canvas", color: COLORS.mint, bg: COLORS.mintSoft },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  padding: "0.55rem 1.1rem", borderRadius: 100,
+                  background: item.bg, color: item.color,
+                  fontSize: "0.78rem", fontWeight: 600,
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}>
+                  {item.label}
+                </div>
+              ))}
+            </div>
+
+            {/* Project Cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {PROJECTS.map((p) => (
+                <div key={p.id} onClick={() => onNavigate(p.id)} style={{
+                  display: "flex", alignItems: "center", gap: "1.25rem",
+                  padding: "1.35rem 1.75rem", borderRadius: 16,
+                  background: COLORS.surface,
+                  border: `1px solid ${COLORS.border}`,
+                  cursor: "pointer", transition: "all 0.3s ease",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = `0 4px 20px ${p.accent}15`;
+                    e.currentTarget.style.borderColor = p.accent + "30";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
+                    e.currentTarget.style.borderColor = COLORS.border;
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  <div style={{
+                    width: 44, height: 44, borderRadius: 12,
+                    background: p.accentSoft, display: "flex",
+                    alignItems: "center", justifyContent: "center",
+                    fontFamily: "'Covered By Your Grace', cursive",
+                    fontSize: "1.1rem", color: p.accent,
+                    flexShrink: 0,
+                  }}>
+                    {p.num}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{
+                      fontFamily: "'Covered By Your Grace', cursive",
+                      fontSize: "1.2rem", color: COLORS.text,
+                      marginBottom: "0.15rem",
+                    }}>
+                      {p.title}
+                    </div>
+                    <div style={{
+                      fontSize: "0.78rem", color: COLORS.textMuted,
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontStyle: "italic", overflow: "hidden",
+                      textOverflow: "ellipsis", whiteSpace: "nowrap",
+                    }}>
+                      {p.subtitle}
+                    </div>
+                  </div>
+                  <div style={{
+                    fontSize: "0.68rem", color: COLORS.textMuted,
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    whiteSpace: "nowrap", flexShrink: 0,
+                  }}>
+                    {p.duration}
+                  </div>
+                  <div style={{ color: p.accent, fontSize: "1rem", opacity: 0.5, flexShrink: 0 }}>→</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div style={{
+            textAlign: "center", padding: "3.5rem 2rem",
+            fontFamily: "'Covered By Your Grace', cursive",
+            fontSize: "1rem",
+            color: COLORS.textMuted,
+          }}>
+            Your school. Your art. Your legacy.
+          </div>
+        </div>
+      );
+    }
+
+    function ProjectPage({ project, onNavigate }) {
+      const p = project;
+      const hasContent = p.days.length > 0;
+
+      return (
+        <div style={{ paddingTop: 58, background: COLORS.bg }}>
+          {/* Project Hero */}
+          <div style={{
+            padding: "4.5rem 2rem 3.5rem", maxWidth: 780, margin: "0 auto",
+            borderBottom: `1px solid ${COLORS.border}`,
+            background: `linear-gradient(180deg, ${p.gradientFrom} 0%, transparent 100%)`,
+          }}>
+            <div style={{
+              display: "flex", alignItems: "center", gap: "0.75rem",
+              marginBottom: "1.25rem",
+            }}>
+              <span style={{
+                fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase",
+                padding: "0.35rem 0.85rem", borderRadius: 100,
+                background: p.accentSoft, color: p.accent,
+                fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+              }}>
+                Project {p.num}
+              </span>
+              <span style={{
+                fontSize: "0.72rem", color: COLORS.textMuted,
+                fontFamily: "'Space Grotesk', sans-serif",
+              }}>
+                {p.duration}
+              </span>
+            </div>
+            <h1 style={{
+              fontFamily: "'Covered By Your Grace', cursive",
+              fontSize: "clamp(2rem, 4.5vw, 3rem)", fontWeight: 400,
+              color: COLORS.text, lineHeight: 1.12, marginBottom: "0.6rem",
+            }}>
+              {p.title}
+            </h1>
+            <p style={{
+              fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.05rem",
+              color: COLORS.textSoft, lineHeight: 1.5,
+            }}>
+              {p.subtitle}
+            </p>
+          </div>
+
+          {hasContent ? (
+            <div style={{ maxWidth: 780, margin: "0 auto", padding: "0 2rem" }}>
+              {/* Essential Question */}
+              <div style={{
+                padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+              }}>
+                <div style={{
+                  display: "inline-block", fontSize: "0.65rem", letterSpacing: "0.2em",
+                  textTransform: "uppercase", color: COLORS.surface,
+                  background: p.accent, padding: "0.3rem 0.7rem",
+                  borderRadius: 100, marginBottom: "1rem",
+                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                }}>
+                  Essential Question
+                </div>
+                <div style={{
+                  fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.55rem",
+                  color: COLORS.text, lineHeight: 1.4,
+                }}>
+                  {p.essential}
+                </div>
+              </div>
+
+              {/* Overview */}
+              <div style={{
+                padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+              }}>
+                <div style={{
+                  fontSize: "0.78rem", fontWeight: 600,
+                  color: p.accent, marginBottom: "0.75rem",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}>
+                  Overview
+                </div>
+                <p style={{
+                  fontSize: "0.92rem", color: COLORS.textSoft,
+                  lineHeight: 1.75, fontFamily: "'Space Grotesk', sans-serif",
+                  maxWidth: 620,
+                }}>
+                  {p.overview}
+                </p>
+              </div>
+
+              {/* Day-by-Day */}
+              <div style={{
+                padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+              }}>
+                <div style={{
+                  fontSize: "0.78rem", fontWeight: 600,
+                  color: p.accent, marginBottom: "1.25rem",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}>
+                  Day-by-Day
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                  {p.days.map((d, i) => (
+                    <div key={i} style={{
+                      borderRadius: 16, overflow: "hidden",
+                      background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+                      boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+                    }}>
+                      {/* Image area */}
+                      <div style={{
+                        width: "100%", height: d.image ? 220 : 160,
+                        background: d.image
+                          ? `url(${d.image}) center/cover no-repeat`
+                          : `linear-gradient(135deg, ${p.accentSoft}, ${COLORS.bgWarm})`,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        position: "relative",
+                      }}>
+                        {!d.image && (
+                          <div style={{
+                            display: "flex", flexDirection: "column",
+                            alignItems: "center", gap: "0.5rem",
+                          }}>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                              stroke={p.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                              style={{ opacity: 0.4 }}>
+                              <rect x="3" y="3" width="18" height="18" rx="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <path d="M21 15l-5-5L5 21" />
+                            </svg>
+                            <span style={{
+                              fontSize: "0.68rem", color: p.accent, opacity: 0.5,
+                              fontFamily: "'Space Grotesk', sans-serif",
+                              maxWidth: 220, textAlign: "center", lineHeight: 1.4,
+                              fontStyle: "italic",
+                            }}>
+                              {d.imageHint || "Add step photo"}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      {/* Text content */}
+                      <div style={{ padding: "1.15rem 1.35rem" }}>
+                        <div style={{
+                          display: "flex", alignItems: "baseline", gap: "0.65rem",
+                          marginBottom: "0.5rem",
+                        }}>
+                          <span style={{
+                            fontSize: "0.65rem", fontWeight: 600,
+                            color: COLORS.surface, background: p.accent,
+                            padding: "0.2rem 0.55rem", borderRadius: 100,
+                            fontFamily: "'Space Grotesk', sans-serif",
+                            whiteSpace: "nowrap",
+                          }}>
+                            {d.day}
+                          </span>
+                          <span style={{
+                            fontFamily: "'Covered By Your Grace', cursive",
+                            fontSize: "1.1rem", color: COLORS.text,
+                          }}>
+                            {d.title}
+                          </span>
+                        </div>
+                        <p style={{
+                          fontSize: "0.82rem", color: COLORS.textSoft,
+                          lineHeight: 1.65, fontFamily: "'Space Grotesk', sans-serif",
+                        }}>
+                          {d.detail}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Materials */}
+              {p.materials.length > 0 && (
+                <div style={{
+                  padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+                }}>
+                  <div style={{
+                    fontSize: "0.78rem", fontWeight: 600,
+                    color: p.accent, marginBottom: "1rem",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}>
+                    Materials
+                  </div>
+                  <div style={{
+                    display: "flex", flexWrap: "wrap", gap: "0.4rem",
+                  }}>
+                    {p.materials.map((m, i) => (
+                      <div key={i} style={{
+                        padding: "0.5rem 0.9rem", borderRadius: 100,
+                        background: p.accentSoft,
+                        fontSize: "0.78rem", color: COLORS.textSoft,
+                        fontFamily: "'Space Grotesk', sans-serif",
+                      }}>
+                        {m}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Artist References */}
+              {p.artists.length > 0 && (
+                <div style={{
+                  padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+                }}>
+                  <div style={{
+                    fontSize: "0.78rem", fontWeight: 600,
+                    color: p.accent, marginBottom: "1rem",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}>
+                    Artist References
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    {p.artists.map((a, i) => (
+                      <div key={i} style={{
+                        padding: "1rem 1.25rem", borderRadius: 14,
+                        background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+                      }}>
+                        <div style={{
+                          fontFamily: "'Covered By Your Grace', cursive",
+                          fontSize: "1rem", color: COLORS.text, marginBottom: "0.2rem",
+                        }}>
+                          {a.name}
+                        </div>
+                        <div style={{
+                          fontSize: "0.78rem", color: COLORS.textMuted,
+                          fontFamily: "'Space Grotesk', sans-serif", fontStyle: "italic",
+                        }}>
+                          {a.note}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Videos */}
+              {p.videos.length > 0 && (
+                <div style={{
+                  padding: "2.5rem 0", borderBottom: `1px solid ${COLORS.border}`,
+                }}>
+                  <div style={{
+                    fontSize: "0.78rem", fontWeight: 600,
+                    color: p.accent, marginBottom: "1rem",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}>
+                    Video References
+                  </div>
+                  {p.videos.map((v, i) => (
+                    <div key={i} style={{
+                      padding: "1rem 1.25rem", borderRadius: 14,
+                      background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+                      display: "flex", alignItems: "center", gap: "1rem",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+                    }}>
+                      <div style={{
+                        width: 40, height: 40, borderRadius: 12,
+                        background: p.accentSoft, display: "flex",
+                        alignItems: "center", justifyContent: "center",
+                        color: p.accent, fontSize: "0.85rem", flexShrink: 0,
+                      }}>
+                        ▶
+                      </div>
+                      <div>
+                        <div style={{
+                          fontSize: "0.88rem", color: COLORS.text,
+                          fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                        }}>
+                          {v.title}
+                        </div>
+                        <div style={{
+                          fontSize: "0.72rem", color: COLORS.textMuted,
+                          fontFamily: "'Space Grotesk', sans-serif",
+                        }}>
+                          {v.source} — {v.note}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Vocabulary */}
+              {p.vocabulary.length > 0 && (
+                <div style={{ padding: "2.5rem 0" }}>
+                  <div style={{
+                    fontSize: "0.78rem", fontWeight: 600,
+                    color: p.accent, marginBottom: "1rem",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}>
+                    Vocabulary
+                  </div>
+                  <div style={{
+                    padding: "1.25rem 1.5rem", borderRadius: 14,
+                    background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+                  }}>
+                    {p.vocabulary.map((v, i) => (
+                      <div key={i} style={{
+                        display: "flex", gap: "1rem", alignItems: "baseline",
+                        padding: "0.6rem 0",
+                        borderBottom: i < p.vocabulary.length - 1 ? `1px solid ${COLORS.border}` : "none",
+                      }}>
+                        <span style={{
+                          fontFamily: "'Covered By Your Grace', cursive",
+                          fontSize: "0.95rem", color: p.accent,
+                          minWidth: 130, flexShrink: 0,
+                        }}>
+                          {v.term}
+                        </span>
+                        <span style={{
+                          fontSize: "0.82rem", color: COLORS.textSoft,
+                          fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1.5,
+                        }}>
+                          {v.def}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div style={{
+              maxWidth: 780, margin: "0 auto", padding: "4rem 2rem", textAlign: "center",
+            }}>
+              <div style={{
+                padding: "3rem 2rem", borderRadius: 20,
+                background: `linear-gradient(135deg, ${p.gradientFrom}, ${p.gradientTo})`,
+                border: `1px solid ${COLORS.border}`,
+              }}>
+                <div style={{
+                  fontFamily: "'Covered By Your Grace', cursive",
+                  fontSize: "1.5rem",
+                  color: COLORS.text, marginBottom: "0.75rem",
+                }}>
+                  {p.essential}
+                </div>
+                <p style={{
+                  fontSize: "0.88rem", color: COLORS.textSoft, lineHeight: 1.6,
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  maxWidth: 460, margin: "0 auto 1.25rem",
+                }}>
+                  {p.overview}
+                </p>
+                <div style={{
+                  display: "inline-block", padding: "0.4rem 1rem",
+                  borderRadius: 100, background: p.accentSoft,
+                  fontSize: "0.7rem", color: p.accent,
+                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                }}>
+                  Full lesson content coming soon
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Bottom Nav */}
+          <div style={{
+            maxWidth: 780, margin: "0 auto", padding: "2rem 2rem 4rem",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+          }}>
+            <button onClick={() => onNavigate("home")} style={{
+              background: COLORS.surface, border: `1px solid ${COLORS.border}`,
+              color: COLORS.textSoft, padding: "0.55rem 1.1rem", borderRadius: 10,
+              fontSize: "0.78rem", fontFamily: "'Space Grotesk', sans-serif",
+              cursor: "pointer", boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+            }}>
+              ← All Projects
+            </button>
+            {(() => {
+              const idx = PROJECTS.findIndex((x) => x.id === p.id);
+              const next = PROJECTS[idx + 1];
+              if (!next) return <div />;
+              return (
+                <button onClick={() => onNavigate(next.id)} style={{
+                  background: next.accentSoft,
+                  border: `1px solid ${next.accent}25`,
+                  color: next.accent, padding: "0.55rem 1.1rem", borderRadius: 10,
+                  fontSize: "0.78rem", fontFamily: "'Space Grotesk', sans-serif",
+                  cursor: "pointer", fontWeight: 600,
+                }}>
+                  Next: {next.title} →
+                </button>
+              );
+            })()}
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [page, setPage] = useState("home");
+      const navigate = (id) => {
+        setPage(id);
+        window.scrollTo({ top: 0, behavior: "auto" });
+      };
+      const activeProject = PROJECTS.find((p) => p.id === page);
+
+      return (
+        <div style={{
+          background: COLORS.bg, color: COLORS.text, minHeight: "100vh",
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Covered+By+Your+Grace&display=swap"
+            rel="stylesheet"
+          />
+          <style>{`
+            @keyframes float {
+              0%, 100% { opacity: 0.35; transform: translateY(0); }
+              50% { opacity: 0.7; transform: translateY(5px); }
+            }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            ::-webkit-scrollbar { display: none; }
+          `}</style>
+          <Nav current={page} onNavigate={navigate} />
+          {page === "home" ? (
+            <Home onNavigate={navigate} />
+          ) : activeProject ? (
+            <ProjectPage project={activeProject} onNavigate={navigate} />
+          ) : null}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
