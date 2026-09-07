@@ -1,133 +1,143 @@
 <!DOCTYPE html>
 <html>
 <style>
+  /* Design system — matches /smartboard components & README
+     SLATE  #2D3142  text & headings
+     ROSE   #E84393  Visual Art I accent
+     TINT   #FDF2F8  rose tint fill
+     GLOW   rgba(232,67,147,0.12)
+     WHITE  #FFFFFF   OFF #FAFAFA   LIGHT #F3F3F3
+     BORDER #E8E8E8   DARK #333333   SUB #666666            */
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: Inter, -apple-system, sans-serif; line-height: 1.6; }
-  
+
   .rules-container {
-    background: #F5F5F5;
+    background: #FFFFFF;
     padding: 2rem;
     border-radius: 12px;
   }
-  
+
   .header {
     text-align: center;
     margin-bottom: 2rem;
-    border-bottom: 3px solid #3D7A8C;
+    border-bottom: 3px solid #E84393;
     padding-bottom: 1rem;
   }
-  
+
   .header h1 {
     font-size: 28px;
     font-weight: 600;
-    color: #1B263B;
+    color: #2D3142;
     margin-bottom: 0.5rem;
   }
-  
+
   .header p {
     font-size: 14px;
-    color: #704860;
+    color: #666666;
     font-weight: 500;
   }
-  
+
   .rules-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   .rule-card {
-    background: white;
-    border-left: 4px solid #9D6B52;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-left: 4px solid #E84393;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 12px rgba(232,67,147,0.12);
   }
-  
+
   .rule-card h2 {
     font-size: 18px;
     font-weight: 600;
-    color: #1B263B;
+    color: #2D3142;
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  
+
   .rule-card.phone {
-    border-left-color: #D49D00;
+    border-left-color: #E84393;
   }
-  
+
   .rule-card.respect {
-    border-left-color: #3D7A8C;
+    border-left-color: #E84393;
   }
-  
+
   .rule-card.boundaries {
-    border-left-color: #704860;
+    border-left-color: #2D3142;
   }
-  
+
   .rule-content {
     font-size: 14px;
-    color: #444;
+    color: #333333;
     line-height: 1.8;
   }
-  
+
   .boundary-box {
-    background: #FBEAF0;
-    border: 1px solid #704860;
+    background: #FDF2F8;
+    border: 1px solid rgba(232,67,147,0.2);
     border-radius: 6px;
     padding: 12px;
     margin-top: 0.75rem;
     font-size: 13px;
-    color: #3d2a40;
+    color: #2D3142;
     line-height: 1.6;
   }
-  
+
   .checklist-section {
-    background: white;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 12px rgba(232,67,147,0.12);
   }
-  
+
   .checklist-section h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #1B263B;
+    color: #2D3142;
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid #3D7A8C;
+    border-bottom: 2px solid #E84393;
   }
-  
+
   .checklist-dos h3 {
-    border-bottom-color: #3D7A8C;
+    border-bottom-color: #E84393;
   }
-  
+
   .checklist-donts h3 {
-    border-bottom-color: #9D6B52;
+    border-bottom-color: #2D3142;
   }
-  
+
   .checklist {
     display: grid;
     gap: 12px;
   }
-  
+
   .checklist-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     padding: 10px 12px;
     border-radius: 6px;
-    background: #F5F5F5;
+    background: #FAFAFA;
     transition: background 0.2s;
   }
-  
+
   .checklist-item:hover {
-    background: #EFEFEF;
+    background: #F3F3F3;
   }
-  
+
   .checklist-item input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -135,36 +145,39 @@
     cursor: pointer;
     flex-shrink: 0;
   }
-  
+
   .checklist-item label {
     cursor: pointer;
     font-size: 14px;
-    color: #444;
+    color: #333333;
     flex: 1;
     padding-top: 2px;
   }
-  
+
   .checklist-item input[type="checkbox"]:checked + label {
-    color: #999;
+    color: #666666;
     text-decoration: line-through;
   }
-  
+
   .dos-item input[type="checkbox"] {
-    accent-color: #3D7A8C;
+    accent-color: #E84393;
   }
-  
+
   .donts-item input[type="checkbox"] {
-    accent-color: #9D6B52;
+    accent-color: #2D3142;
   }
-  
+
   .emoji {
     font-size: 20px;
     margin-right: 4px;
   }
-  
+
   @media print {
     body { background: white; }
     .rules-container { background: white; box-shadow: none; }
+    /* Chrome's PDF export flattens blurred shadows into hard-edged
+       blocks — borders alone carry the structure in print. */
+    .rule-card, .checklist-section { box-shadow: none; }
   }
 </style>
 
