@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Sketchbook — Visual Art Foundations 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF9F6;
+    --surface: #FFFFFF;
+    --text: #1A1A2E;
+    --text-mid: #4A4A5A;
+    --text-light: #8A8A96;
+    --border: #E8E5E0;
+    --accent: #1B7A7A;
+    --accent-bold: #0D5C5C;
+    --accent-light: #D4F0F0;
+    --accent-glow: rgba(27, 122, 122, 0.10);
+    --warm: #D4513D;
+    --warm-light: #FDDDD7;
+    --gold: #D4942A;
+    --gold-light: #FDF0D5;
+    --radius: 14px;
+    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Nav ── */
+  .top-nav {
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .top-nav a {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .top-nav a:hover { text-decoration: underline; }
+
+  .top-nav .page-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  /* ── Hero ── */
+  .lesson-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    overflow: hidden;
+  }
+
+  .lesson-hero .hero-image {
+    background: linear-gradient(160deg, var(--accent-light) 0%, #A8DCD1 40%, var(--accent-glow) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lesson-hero .hero-image .big-label {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(8rem, 18vw, 14rem);
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.08;
+    position: absolute;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+  }
+
+  .lesson-hero .hero-image .placeholder-msg {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent-bold);
+    opacity: 0.5;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .lesson-hero .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3.5rem;
+    background: var(--surface);
+  }
+
+  .lesson-hero .hero-text .phase-tag {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--warm);
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-hero .hero-text h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .lesson-hero .hero-text h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .lesson-hero .hero-text .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    max-width: 440px;
+  }
+
+  .lesson-hero .hero-text .tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .lesson-hero .hero-text .tool-chip {
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: var(--accent-light);
+    color: var(--accent-bold);
+  }
+
+  /* ── Phase Sections ── */
+  .phase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+
+  .phase.reversed { direction: rtl; }
+  .phase.reversed > * { direction: ltr; }
+
+  .phase .phase-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .phase .phase-image .img-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase .phase-image .img-placeholder .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(6rem, 14vw, 10rem);
+    font-weight: 800;
+    opacity: 0.07;
+    position: absolute;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .phase .phase-image .img-placeholder .img-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    font-weight: 600;
+    opacity: 0.45;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .phase .phase-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3.5rem;
+  }
+
+  .phase .phase-content .phase-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .phase .phase-content h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+  }
+
+  .phase .phase-content .step-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.15rem 1.35rem;
+    border-radius: 12px;
+    transition: background var(--transition);
+  }
+
+  .step-card:hover { background: rgba(0,0,0,0.02); }
+
+  .step-card .step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .step-card .step-text h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    line-height: 1.25;
+  }
+
+  .step-card .step-text p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  /* Phase color coding */
+  .phase-signatures .phase-label { color: var(--accent); }
+  .phase-signatures .phase-image .img-placeholder { background: linear-gradient(150deg, var(--accent-light), #B8E4E4); }
+  .phase-signatures .phase-image .img-placeholder .step-num { color: var(--accent); }
+  .phase-signatures .phase-image .img-placeholder .img-label { color: var(--accent-bold); }
+  .phase-signatures .step-icon { background: var(--accent-light); color: var(--accent-bold); }
+
+  .phase-covers .phase-label { color: var(--warm); }
+  .phase-covers .phase-image .img-placeholder { background: linear-gradient(150deg, var(--warm-light), #F9C4B8); }
+  .phase-covers .phase-image .img-placeholder .step-num { color: var(--warm); }
+  .phase-covers .phase-image .img-placeholder .img-label { color: var(--warm); }
+  .phase-covers .step-icon { background: var(--warm-light); color: var(--warm); }
+
+  .phase-stitch .phase-label { color: var(--gold); }
+  .phase-stitch .phase-image .img-placeholder { background: linear-gradient(150deg, var(--gold-light), #F5D88E); }
+  .phase-stitch .phase-image .img-placeholder .step-num { color: var(--gold); }
+  .phase-stitch .phase-image .img-placeholder .img-label { color: var(--gold); }
+  .phase-stitch .step-icon { background: var(--gold-light); color: var(--gold); }
+
+  /* ── Detail Gallery ── */
+  .detail-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .detail-strip .detail-cell {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-strip .detail-cell:nth-child(1) { background: var(--accent-light); }
+  .detail-strip .detail-cell:nth-child(2) { background: var(--warm-light); }
+  .detail-strip .detail-cell:nth-child(3) { background: var(--gold-light); }
+  .detail-strip .detail-cell:nth-child(4) { background: linear-gradient(135deg, #EDE6F9, #D4C8F0); }
+
+  .detail-cell .detail-big {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-cell:nth-child(1) .detail-big { color: var(--accent-bold); }
+  .detail-cell:nth-child(2) .detail-big { color: var(--warm); }
+  .detail-cell:nth-child(3) .detail-big { color: var(--gold); }
+  .detail-cell:nth-child(4) .detail-big { color: #5C3FA3; }
+
+  .detail-cell .detail-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-mid);
+  }
+
+  /* ── Video Reference ── */
+  .video-ref {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vh;
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .video-ref .video-embed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  .video-ref .video-embed .video-wrapper {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .video-ref .video-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-ref .video-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem;
+  }
+
+  .video-ref .video-text .video-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-light);
+    margin-bottom: 0.35rem;
+  }
+
+  .video-ref .video-text h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: #EEE;
+  }
+
+  .video-ref .video-text p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    max-width: 400px;
+  }
+
+  /* ── Bottom Nav ── */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .bottom-nav a {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .bottom-nav a:hover { color: var(--accent-bold); }
+
+  .bottom-nav .next-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .lesson-hero,
+    .phase,
+    .video-ref { grid-template-columns: 1fr; }
+    .phase.reversed { direction: ltr; }
+    .detail-strip { grid-template-columns: repeat(2, 1fr); }
+    .lesson-hero .hero-text,
+    .phase .phase-content { padding: 2.5rem 1.5rem; }
+    .phase .phase-image { min-height: 40vh; }
+    .lesson-hero .hero-image { min-height: 40vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="top-nav">
+  <a href="index.html">← Back to all weeks</a>
+  <span class="page-label">Pre-Lesson · Sketchbook Build</span>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="lesson-hero">
+  <div class="hero-image">
+    <span class="big-label">00</span>
+    <span class="placeholder-msg">photo: finished coptic stitch sketchbooks</span>
+  </div>
+  <div class="hero-text">
+    <div class="phase-tag">Before anything else —</div>
+    <h1>Build Your <em>Sketchbook.</em></h1>
+    <p class="hero-desc">Before we draw, paint, or print anything — we build the book that holds it all. Hand-cut, hand-folded, hand-stitched. This sketchbook is yours from the first page to the last stitch.</p>
+    <div class="tools-list">
+      <span class="tool-chip">Paper</span>
+      <span class="tool-chip">Bone Folder</span>
+      <span class="tool-chip">Awl</span>
+      <span class="tool-chip">Needle</span>
+      <span class="tool-chip">Waxed Thread</span>
+      <span class="tool-chip">Cover Board</span>
+      <span class="tool-chip">Binder Clips</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PHASE 1: SIGNATURES ══════════ -->
+<section class="phase phase-signatures">
+  <div class="phase-image">
+    <div class="img-placeholder">
+      <span class="step-num">01</span>
+      <span class="img-label">photo: cutting, folding &amp; pressing signatures</span>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="phase-label">Phase 1 — already in progress</div>
+    <h2>Cut, Fold, Punch, Press</h2>
+    <div class="step-cards">
+      <div class="step-card">
+        <div class="step-icon">✂️</div>
+        <div class="step-text">
+          <h3>Cut your sheets to size</h3>
+          <p>Each sheet gets cut to the same dimensions. Measure twice — a crooked cut shows in the final book.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📐</div>
+        <div class="step-text">
+          <h3>Fold into signatures</h3>
+          <p>Stack 4–5 sheets together, fold as a group. Use the bone folder to crease — fingernails leave a sloppy fold.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📍</div>
+        <div class="step-text">
+          <h3>Punch your holes</h3>
+          <p>Use the template to mark, then punch with the awl. Same spacing on every signature — this is what makes the stitch line up.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📚</div>
+        <div class="step-text">
+          <h3>Press the signatures flat</h3>
+          <p>Stack them under weight overnight. Pressed signatures sit tight and stitch clean.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PHASE 2: COVERS ══════════ -->
+<section class="phase phase-covers reversed">
+  <div class="phase-image">
+    <div class="img-placeholder">
+      <span class="step-num">02</span>
+      <span class="img-label">photo: decorating &amp; personalizing covers</span>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="phase-label">Phase 2 — this week</div>
+    <h2>Create Your Covers</h2>
+    <div class="step-cards">
+      <div class="step-card">
+        <div class="step-icon">📏</div>
+        <div class="step-text">
+          <h3>Cut your cover boards</h3>
+          <p>Front and back covers, same size as your signatures. Slightly larger is fine — a tiny overhang protects the pages.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🎨</div>
+        <div class="step-text">
+          <h3>Design your cover</h3>
+          <p>Collage, paint, draw, stamp — this is the face of your sketchbook for the whole semester. Make it yours.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📍</div>
+        <div class="step-text">
+          <h3>Punch matching holes</h3>
+          <p>Same template as the signatures. Cover holes must line up exactly or the stitch won't work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PHASE 3: COPTIC STITCH ══════════ -->
+<section class="phase phase-stitch">
+  <div class="phase-image">
+    <div class="img-placeholder">
+      <span class="step-num">03</span>
+      <span class="img-label">photo: coptic stitch binding in progress</span>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="phase-label">Phase 3 — bringing it all together</div>
+    <h2>Coptic Stitch Binding</h2>
+    <div class="step-cards">
+      <div class="step-card">
+        <div class="step-icon">🪡</div>
+        <div class="step-text">
+          <h3>Thread your needle</h3>
+          <p>Cut a long piece of waxed thread — about 4 arm-lengths. Thread and pull halfway. No knot yet.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">📖</div>
+        <div class="step-text">
+          <h3>Attach the back cover</h3>
+          <p>Start from the outside of the back cover. Go through the first hole, into the first signature, and back out. Wrap around the stitch on the cover to lock it.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🔗</div>
+        <div class="step-text">
+          <h3>Chain stitch the signatures</h3>
+          <p>Each new signature links to the one below it. In through the hole, out, loop under the previous stitch, pull tight. Repeat across, then add the next signature.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">✅</div>
+        <div class="step-text">
+          <h3>Attach the front cover &amp; tie off</h3>
+          <p>Last signature connects to the front cover the same way you started. Tie a square knot inside the last signature. Trim the tail.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DETAIL STRIP ══════════ -->
+<section class="detail-strip">
+  <div class="detail-cell">
+    <div class="detail-big">2</div>
+    <div class="detail-label">sheets per signature</div>
+  </div>
+  <div class="detail-cell">
+    <div class="detail-big">10–12</div>
+    <div class="detail-label">signatures per book</div>
+  </div>
+  <div class="detail-cell">
+    <div class="detail-big">180°</div>
+    <div class="detail-label">opens completely flat</div>
+  </div>
+  <div class="detail-cell">
+    <div class="detail-big">100%</div>
+    <div class="detail-label">handmade by you</div>
+  </div>
+</section>
+
+<!-- ══════════ VIDEO REFERENCE ══════════ -->
+<section class="video-ref">
+  <div class="video-embed">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/rvqNAcNxbGc" title="Coptic Stitch Binding Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="video-text">
+    <div class="video-label">reference video</div>
+    <h2>Coptic Stitch Binding — The Frugal Crafter</h2>
+    <p>Watch the full stitching process from start to finish. Pause and follow along during the binding phase. If you get lost, rewind — every stitch is the same motion repeated.</p>
+  </div>
+</section>
+
+<!-- ── Bottom Nav ── -->
+<nav class="bottom-nav">
+  <a href="index.html">← All Weeks</a>
+  <div style="text-align: right;">
+    <span class="next-label">up next →</span><br>
+    <a href="week-01.html">Week 1: Mark-Making &amp; Line</a>
+  </div>
+</nav>
+
+</body>
+</html>

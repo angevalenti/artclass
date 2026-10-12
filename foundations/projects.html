@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Visual Art Foundations — Classroom Hub</title>
+  <title>Visual Art Foundations 1 — Classroom Hub</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,11 +220,18 @@
           borderBottom: `1px solid ${COLORS.border}`,
           padding: "0 2rem", display: "flex", alignItems: "center", height: 58, gap: "2rem",
         }}>
+          <a href="index.html" style={{
+            fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.72rem",
+            color: COLORS.textMuted, textDecoration: "none",
+            whiteSpace: "nowrap", flexShrink: 0,
+          }}>
+            ← Overview
+          </a>
           <div onClick={() => onNavigate("home")} style={{
             fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.2rem",
             cursor: "pointer", color: COLORS.text, whiteSpace: "nowrap",
           }}>
-            Visual Art Foundations
+            Visual Art Foundations 1
           </div>
           <div style={{
             display: "flex", gap: "0.3rem", overflowX: "auto", flex: 1,
@@ -279,7 +286,7 @@
               color: COLORS.purple, marginBottom: "1.25rem",
               fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
             }}>
-              NPIS Visual Arts
+              Holy Redeemer Visual Arts
             </div>
             <h1 style={{
               fontFamily: "'Covered By Your Grace', cursive",

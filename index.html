@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Class — Holy Redeemer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Mono&family=Rock+Salt&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+a { color: inherit; }
+svg.dd { position: absolute; pointer-events: none; overflow: visible; max-width: none; }
+svg.dd path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+img, svg { max-width: 100%; }
+
+:root { --ink:#111111; --char:#3A3A3A; --ink2:#6B6B6B; --paper:#F6F4EF; --white:#FFFFFF; --grid:#E4E1DA; --pink:#FF6FAE; --yellow:#FFE14D; --green:#5BE09B; --dim:#DCD8CF; }
+body { font-family:'Kalam',cursive; color:var(--ink); font-size:18px; line-height:1.45; overflow-x:hidden;
+  background-color:var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px; }
+.wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+.mono { font-family:'Space Mono',monospace; }
+nav { padding:22px 0; }
+nav .wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.brand { font-family:'Rock Salt',cursive; font-size:1rem; text-decoration:none; }
+nav ul { list-style:none; display:flex; gap:10px; flex-wrap:wrap; }
+nav a.tab { font-family:'Space Mono',monospace; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; text-decoration:none; padding:6px 12px; border:1.5px solid var(--ink); background:var(--paper); }
+nav a.tab:hover { background:var(--ink); color:var(--paper); }
+.hero { padding:56px 0 30px; position:relative; }
+.hero .tape { display:inline-block; background:var(--yellow); color:var(--ink); padding:4px 14px; transform:rotate(-2deg); font-family:'Space Mono',monospace; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; }
+.hero h1 { font-weight:700; font-size:clamp(3rem,8vw,6rem); line-height:.98; margin-top:22px; max-width:860px; }
+.hero h1 em { font-style:normal; color:var(--ink); position:relative; display:inline-block; }
+.hero p { margin-top:20px; font-size:1.25rem; max-width:560px; color:var(--ink2); }
+.hero .note { position:absolute; right:30px; top:70px; font-family:'Rock Salt',cursive; font-size:.95rem; color:var(--char); transform:rotate(6deg); width:200px; text-align:center; }
+.hero .note svg.dd { position:static; display:block; margin:6px auto 0; width:80px; height:60px; }
+
+/* ── Track sections ── */
+.track { padding:34px 0 10px; }
+.track .kicker { font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink2); }
+.track > h2 { font-weight:700; font-size:2.2rem; line-height:1; display:inline-block; position:relative; margin:6px 0 26px; }
+.courses { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr)); gap:40px; align-items:start; }
+
+.page { background:var(--white); border:2px solid var(--ink); padding:30px 28px 26px; position:relative; box-shadow:8px 8px 0 var(--accent); }
+.va { --accent:var(--pink); } .td { --accent:var(--yellow); } .hn { --accent:var(--green); }
+.page.soon { border-style:dashed; }
+.page .tag { font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink2); }
+.page h2 { font-weight:700; font-size:2.6rem; line-height:1; margin:8px 0 6px; position:relative; display:inline-block; }
+.page .sub { color:var(--ink2); }
+.page .btns { display:flex; gap:10px; margin:18px 0 22px; flex-wrap:wrap; }
+.page .btns a { font-family:'Space Mono',monospace; font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; text-decoration:none; padding:8px 12px; border:1.5px solid var(--ink); }
+.page .btns a.pop { background:var(--accent); color:var(--ink); border-color:var(--ink); }
+.units { list-style:none; }
+.units li { display:grid; grid-template-columns:44px 1fr auto; gap:4px 12px; padding:12px 0; border-top:1.5px dashed #CFCBC2; }
+.units .n { font-family:'Rock Salt',cursive; color:var(--ink); width:36px; height:36px; display:grid; place-items:center; font-size:.85rem; margin-top:2px; transform:rotate(-3deg); box-shadow:1px 2px 0 rgba(0,0,0,.12); background:var(--accent); }
+.units li:nth-child(even) .n { transform:rotate(2.5deg); }
+.units h3 { font-weight:700; font-size:1.25rem; line-height:1.15; }
+.units .p { font-size:.98rem; color:var(--ink2); }
+.units .wk { font-family:'Space Mono',monospace; font-size:.72rem; color:var(--ink2); white-space:nowrap; padding-top:6px; }
+.soonnote { border-top:1.5px dashed #CFCBC2; margin-top:4px; padding:18px 0 6px; color:var(--ink2); font-size:1rem; }
+.page .hub { display:block; margin-top:20px; text-decoration:none; font-family:'Rock Salt',cursive; font-size:.95rem; color:var(--ink); width:fit-content; border-bottom:4px solid var(--accent); padding-bottom:2px; }
+
+.res { padding-top:40px; }
+.res h2 { font-weight:700; font-size:2.6rem; display:inline-block; position:relative; margin-bottom:24px; }
+.stickies { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); gap:24px; padding-bottom:40px; }
+.sticky { padding:22px 20px; min-height:170px; display:flex; flex-direction:column; gap:4px; box-shadow:0 6px 14px rgba(0,0,0,.08); border:1.5px solid var(--char); }
+.sticky:nth-child(1){ background:var(--white); transform:rotate(-1.5deg); }
+.sticky:nth-child(2){ background:#ECE9E2; transform:rotate(1deg); }
+.sticky:nth-child(3){ background:var(--white); transform:rotate(-.6deg); }
+.sticky:nth-child(4){ background:#ECE9E2; transform:rotate(1.4deg); }
+.sticky b { font-size:1.25rem; line-height:1.15; }
+.sticky span { color:var(--ink2); font-size:.98rem; }
+.sticky .l { margin-top:auto; display:flex; gap:14px; }
+.sticky .l a { font-family:'Space Mono',monospace; font-size:.75rem; text-transform:uppercase; }
+footer { text-align:center; padding:48px 0 60px; font-family:'Rock Salt',cursive; font-size:.95rem; }
+@media (max-width:760px){ .hero .note{ display:none; } .page{ padding:24px 20px; box-shadow:5px 5px 0 var(--accent); } .page h2{ font-size:2.2rem; } .track > h2{ font-size:1.9rem; } }
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="#top">art class!</a><ul>
+<li><a class="tab" href="#foundations">Foundations</a></li><li><a class="tab" href="#3d-art">3D Art</a></li><li><a class="tab" href="#honors">Honors</a></li><li><a class="tab" href="#resources">Resources</a></li></ul></div></nav>
+
+<header class="hero" id="top"><div class="wrap" style="position:relative">
+<span class="tape">Ms. Valenti · Holy Redeemer · 2026–27</span>
+<h1>Every class,<br>one <em>sketchbook
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-10px;width:100%;height:22px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14 M30 24 C 110 18, 200 26, 280 22" stroke="#3A3A3A" stroke-width="4"/></svg>
+</em> page.</h1>
+<p>Syllabi, scope &amp; sequence, and SmartBoard resources for all six art courses.</p>
+<div class="note">start here!<svg class="dd" viewBox="0 0 80 60"><path d="M60 4 C 30 10, 14 26, 18 54 M8 42 L18 55 L30 44" stroke="#3A3A3A" stroke-width="3.5"/></svg></div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ══ Visual Art Foundations ══ -->
+<section class="track" id="foundations">
+<div class="kicker">Track 01</div>
+<h2>Visual Art Foundations
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-8px;width:100%;height:18px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14" stroke="#FF6FAE" stroke-width="4"/></svg>
+</h2>
+<div class="courses">
+
+<section class="page va" id="foundations-1"><div class="tag">Semester · 18 weeks</div><h2>Foundations 1</h2><div class="sub">Learn to see like an artist</div>
+<div class="btns"><a class="pop" href="syllabi/Visual_Art_I_Syllabus.pdf" target="_blank">Syllabus PDF</a><a href="syllabi/Visual_Art_I_Syllabus.docx">Edit in Word</a></div>
+<ol class="units">
+<li><div class="n">01</div><div><h3>Line &amp; Value</h3><div class="p">Blind Contour Portrait Swap · &quot;Draw Your Grail&quot;</div></div><div class="wk">wk 1–3</div></li>
+<li><div class="n">02</div><div><h3>Observation &amp; Texture</h3><div class="p">&quot;What&#x27;s In My Bag&quot; Still Life · Texture Hunt &amp; Draw</div></div><div class="wk">wk 4–6</div></li>
+<li><div class="n">03</div><div><h3>Color &amp; Painting</h3><div class="p">Design a Product Label · Mood Painting (Monochromatic)</div></div><div class="wk">wk 7–9</div></li>
+<li><div class="n">04</div><div><h3>Space &amp; Identity</h3><div class="p">Imaginary World Landscape · Identity Portrait (Any Style)</div></div><div class="wk">wk 10–12</div></li>
+<li><div class="n">05</div><div><h3>Mixed Media &amp; Message</h3><div class="p">Social Commentary Collage</div></div><div class="wk">wk 13–15</div></li>
+<li><div class="n">06</div><div><h3>Portfolio &amp; Showcase</h3><div class="p">Personal Zine / Mini Portfolio</div></div><div class="wk">wk 16–18</div></li>
+</ol>
+<a class="hub" href="foundations/index.html">→ open the course hub</a></section>
+
+<section class="page va soon" id="foundations-2"><div class="tag">Semester</div><h2>Foundations 2</h2><div class="sub">Where Foundations 1 leaves off</div>
+<div class="soonnote">Scope &amp; sequence is being written. The course page is up and will fill in as units are finalized.</div>
+<a class="hub" href="foundations-2/index.html">→ open the course page</a></section>
+
+</div></section>
+
+<!-- ══ 3D Art ══ -->
+<section class="track" id="3d-art">
+<div class="kicker">Track 02</div>
+<h2>3D Art
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-8px;width:100%;height:18px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14" stroke="#E8C200" stroke-width="4"/></svg>
+</h2>
+<div class="courses">
+
+<section class="page td" id="3d-art-1"><div class="tag">Full year · 36 weeks</div><h2>3D Art 1</h2><div class="sub">Think in three dimensions</div>
+<div class="btns"><a class="pop" href="syllabi/3D_Art_Syllabus.pdf" target="_blank">Syllabus PDF</a><a href="syllabi/3D_Art_Syllabus.docx">Edit in Word</a></div>
+<ol class="units">
+<li><div class="n">01</div><div><h3>Foundations &amp; Hand-Building</h3><div class="p">Dream Sneaker Sculpture</div></div><div class="wk">wk 1–4</div></li>
+<li><div class="n">02</div><div><h3>Creature Design &amp; Soft Sculpture</h3><div class="p">Design &amp; Sew Your Own Plush · Wire Neon Sign</div></div><div class="wk">wk 5–10</div></li>
+<li><div class="n">03</div><div><h3>Architecture &amp; Wearable Art</h3><div class="p">Tiny House / Dream Room · Wearable Art Piece</div></div><div class="wk">wk 11–16</div></li>
+<li><div class="n">04</div><div><h3>Relief &amp; Character Design</h3><div class="p">Album Cover in Relief · Character / Cosplay Mask</div></div><div class="wk">wk 17–22</div></li>
+<li><div class="n">05</div><div><h3>Assemblage &amp; Craft</h3><div class="p">E-Waste Creature · Custom Ring or Wearable</div></div><div class="wk">wk 23–28</div></li>
+<li><div class="n">06</div><div><h3>Personal Monument &amp; Showcase</h3><div class="p">Personal Monument</div></div><div class="wk">wk 29–36</div></li>
+</ol>
+<a class="hub" href="3d-art/index.html">→ open the course page</a></section>
+
+<section class="page td soon" id="3d-art-2"><div class="tag">Full year · 36 weeks</div><h2>3D Art 2</h2><div class="sub">Advanced studio practice</div>
+<div class="soonnote">Scope &amp; sequence is being written. The course page is up and will fill in as units are finalized.</div>
+<a class="hub" href="3d-art-2/index.html">→ open the course page</a></section>
+
+</div></section>
+
+<!-- ══ Honors 3D Art ══ -->
+<section class="track" id="honors">
+<div class="kicker">Track 03</div>
+<h2>Honors 3D Art
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-8px;width:100%;height:18px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14" stroke="#2BB673" stroke-width="4"/></svg>
+</h2>
+<div class="courses">
+
+<section class="page hn soon" id="honors-1"><div class="tag">Full year · 36 weeks</div><h2>Honors 3D Art 1</h2><div class="sub">Independent studio &amp; critique</div>
+<div class="soonnote">Scope &amp; sequence is being written. The course page is up and will fill in as units are finalized.</div>
+<a class="hub" href="honors-3d/index.html">→ open the course page</a></section>
+
+<section class="page hn soon" id="honors-2"><div class="tag">Full year · 36 weeks</div><h2>Honors 3D Art 2</h2><div class="sub">Capstone portfolio year</div>
+<div class="soonnote">Scope &amp; sequence is being written. The course page is up and will fill in as units are finalized.</div>
+<a class="hub" href="honors-3d-2/index.html">→ open the course page</a></section>
+
+</div></section>
+
+<!-- ══ Resources ══ -->
+<section class="res" id="resources"><h2>Resources
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-10px;width:100%;height:22px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14 M30 24 C 110 18, 200 26, 280 22" stroke="#3A3A3A" stroke-width="4"/></svg>
+</h2>
+<div class="stickies">
+<div class="sticky"><b>Classroom Rules</b><span>Visual Art I rules for the room</span><div class="l"><a href="visual_art_i_classroom_rules.html">View</a><a href="Visual_Art_I_Classroom_Rules.pdf" target="_blank">PDF</a></div></div>
+<div class="sticky"><b>Studio Expectations &amp; Procedures</b><span>How the studio runs, day to day</span><div class="l"><a href="syllabi/Studio_Expectations_Procedures.pdf" target="_blank">PDF</a><a href="syllabi/Studio_Expectations_Procedures.docx">Word</a></div></div>
+<div class="sticky"><b>The Big Doodle</b><span>First-day collaborative drawing icebreaker</span><div class="l"><a href="syllabi/The_Big_Doodle_Icebreaker.pdf" target="_blank">PDF</a><a href="syllabi/The_Big_Doodle_Icebreaker.docx">Word</a></div></div>
+<div class="sticky"><b>Foundations SmartBoard Hub</b><span>Interactive project pages for the board</span><div class="l"><a href="foundations/projects.html">Open</a></div></div>
+</div></section>
+
+</main><footer>— Ms. Valenti</footer></body></html>
