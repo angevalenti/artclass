@@ -292,3 +292,6 @@ footer { text-align:center; padding:48px 0 60px; font-family:var(--scrawl); font
 
 /* Three-up course grid (home page) */
 .courses.three { grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); }
+
+/* Button row as the last thing in a card shouldn't leave a gap */
+.page .btns:last-child { margin-bottom:0; }
