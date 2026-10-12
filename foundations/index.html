@@ -3,573 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visual Art Foundations 1</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #FAF9F6;
-    --surface: #FFFFFF;
-    --text: #1A1A2E;
-    --text-mid: #4A4A5A;
-    --text-light: #8A8A96;
-    --border: #E8E5E0;
-
-    /* Unit colors — punched up */
-    --drawing: #1B7A7A;
-    --drawing-bold: #0D5C5C;
-    --drawing-light: #D4F0F0;
-    --drawing-glow: rgba(27, 122, 122, 0.12);
-
-    --painting: #D4513D;
-    --painting-bold: #B33A28;
-    --painting-light: #FDDDD7;
-    --painting-glow: rgba(212, 81, 61, 0.12);
-
-    --printmaking: #7B5EBF;
-    --printmaking-bold: #5C3FA3;
-    --printmaking-light: #EDE6F9;
-    --printmaking-glow: rgba(123, 94, 191, 0.12);
-
-    --threed: #2E8B57;
-    --threed-bold: #1F6B40;
-    --threed-light: #D6F0E2;
-    --threed-glow: rgba(46, 139, 87, 0.12);
-
-    --capstone: #D4942A;
-    --capstone-bold: #B57A14;
-    --capstone-light: #FDF0D5;
-    --capstone-glow: rgba(212, 148, 42, 0.12);
-
-    --radius: 14px;
-    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── Header ── */
-  .site-header {
-    padding: 1rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .site-header .logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .site-header .logo span { color: var(--drawing); }
-
-  .site-nav { display: flex; gap: 1.75rem; list-style: none; }
-
-  .site-nav a {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text-mid);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-
-  .site-nav a:hover { color: var(--text); }
-  .site-nav a.active { color: var(--drawing); }
-
-  /* ── Hero ── */
-  .hero {
-    padding: 5rem 2.5rem 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(ellipse at 15% 85%, var(--drawing-glow) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 15%, var(--painting-glow) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, var(--printmaking-glow) 0%, transparent 60%),
-      var(--bg);
-  }
-
-  /* Decorative brush strokes */
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    right: -40px;
-    width: 320px;
-    height: 320px;
-    background: var(--painting-glow);
-    border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
-    transform: rotate(-15deg);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px;
-    left: -60px;
-    width: 280px;
-    height: 280px;
-    background: var(--drawing-glow);
-    border-radius: 50% 60% 40% 60% / 60% 40% 60% 40%;
-    transform: rotate(25deg);
-    pointer-events: none;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Caveat', cursive;
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: var(--painting);
-    margin-bottom: 0.75rem;
-  }
-
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    margin-bottom: 1.25rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--drawing);
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-    color: var(--text-mid);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.65;
-  }
-
-  /* ── Unit Section Headers ── */
-  .unit-section {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2.5rem;
-  }
-
-  .unit-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    padding: 3.5rem 0 1.5rem;
-    border-bottom: 3px solid var(--border);
-    margin-bottom: 1.5rem;
-  }
-
-  .unit-header .unit-num {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .unit-header .unit-info {
-    flex: 1;
-  }
-
-  .unit-header .unit-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
-
-  .unit-header .unit-range {
-    font-family: 'Caveat', cursive;
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-top: 0.15rem;
-  }
-
-  .unit-header[data-unit="drawing"] .unit-num { color: var(--drawing); }
-  .unit-header[data-unit="drawing"] .unit-range { color: var(--drawing); }
-  .unit-header[data-unit="drawing"] { border-color: var(--drawing-light); }
-  .unit-header[data-unit="painting"] .unit-num { color: var(--painting); }
-  .unit-header[data-unit="painting"] .unit-range { color: var(--painting); }
-  .unit-header[data-unit="painting"] { border-color: var(--painting-light); }
-  .unit-header[data-unit="printmaking"] .unit-num { color: var(--printmaking); }
-  .unit-header[data-unit="printmaking"] .unit-range { color: var(--printmaking); }
-  .unit-header[data-unit="printmaking"] { border-color: var(--printmaking-light); }
-  .unit-header[data-unit="threed"] .unit-num { color: var(--threed); }
-  .unit-header[data-unit="threed"] .unit-range { color: var(--threed); }
-  .unit-header[data-unit="threed"] { border-color: var(--threed-light); }
-  .unit-header[data-unit="capstone"] .unit-num { color: var(--capstone); }
-  .unit-header[data-unit="capstone"] .unit-range { color: var(--capstone); }
-  .unit-header[data-unit="capstone"] { border-color: var(--capstone-light); }
-
-  /* ── Week Grid ── */
-  .weeks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 1.5rem;
-    padding-bottom: 1rem;
-  }
-
-  /* ── Week Card ── */
-  .week-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-shadow: 0 1px 4px rgba(26, 26, 46, 0.06);
-    transition: box-shadow var(--transition), transform var(--transition);
-  }
-
-  .week-card:hover {
-    box-shadow: 0 8px 30px rgba(26, 26, 46, 0.12);
-    transform: translateY(-4px);
-  }
-
-  /* Bold color bar on top */
-  .week-card::before {
-    content: '';
-    display: block;
-    height: 5px;
-  }
-
-  .week-card[data-unit="drawing"]::before { background: linear-gradient(90deg, var(--drawing), var(--drawing-bold)); }
-  .week-card[data-unit="painting"]::before { background: linear-gradient(90deg, var(--painting), var(--painting-bold)); }
-  .week-card[data-unit="printmaking"]::before { background: linear-gradient(90deg, var(--printmaking), var(--printmaking-bold)); }
-  .week-card[data-unit="threed"]::before { background: linear-gradient(90deg, var(--threed), var(--threed-bold)); }
-  .week-card[data-unit="capstone"]::before { background: linear-gradient(90deg, var(--capstone), var(--capstone-bold)); }
-
-  .week-card .card-image {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .week-card .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-
-  .week-card:hover .card-image img {
-    transform: scale(1.05);
-  }
-
-  /* Styled placeholders with pattern */
-  .week-card .card-image .placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .week-card .card-image .placeholder .week-big {
-    font-family: 'Fraunces', serif;
-    font-size: 5rem;
-    font-weight: 800;
-    opacity: 0.12;
-    position: absolute;
-    right: 12px;
-    bottom: -8px;
-    line-height: 1;
-    letter-spacing: -0.05em;
-  }
-
-  .week-card .card-image .placeholder .placeholder-text {
-    font-family: 'Caveat', cursive;
-    font-size: 1.25rem;
-    font-weight: 600;
-    opacity: 0.5;
-    z-index: 1;
-  }
-
-  .week-card[data-unit="drawing"] .placeholder {
-    background: linear-gradient(135deg, var(--drawing-light) 0%, #B8E4E4 100%);
-  }
-  .week-card[data-unit="drawing"] .placeholder .week-big { color: var(--drawing); }
-  .week-card[data-unit="drawing"] .placeholder .placeholder-text { color: var(--drawing-bold); }
-
-  .week-card[data-unit="painting"] .placeholder {
-    background: linear-gradient(135deg, var(--painting-light) 0%, #F9C4B8 100%);
-  }
-  .week-card[data-unit="painting"] .placeholder .week-big { color: var(--painting); }
-  .week-card[data-unit="painting"] .placeholder .placeholder-text { color: var(--painting-bold); }
-
-  .week-card[data-unit="printmaking"] .placeholder {
-    background: linear-gradient(135deg, var(--printmaking-light) 0%, #D4C8F0 100%);
-  }
-  .week-card[data-unit="printmaking"] .placeholder .week-big { color: var(--printmaking); }
-  .week-card[data-unit="printmaking"] .placeholder .placeholder-text { color: var(--printmaking-bold); }
-
-  .week-card[data-unit="threed"] .placeholder {
-    background: linear-gradient(135deg, var(--threed-light) 0%, #A8DFC0 100%);
-  }
-  .week-card[data-unit="threed"] .placeholder .week-big { color: var(--threed); }
-  .week-card[data-unit="threed"] .placeholder .placeholder-text { color: var(--threed-bold); }
-
-  .week-card[data-unit="capstone"] .placeholder {
-    background: linear-gradient(135deg, var(--capstone-light) 0%, #F5D88E 100%);
-  }
-  .week-card[data-unit="capstone"] .placeholder .week-big { color: var(--capstone); }
-  .week-card[data-unit="capstone"] .placeholder .placeholder-text { color: var(--capstone-bold); }
-
-  .week-card .card-body {
-    padding: 1.25rem 1.4rem 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .week-card .card-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .week-card .card-desc {
-    font-size: 0.88rem;
-    color: var(--text-mid);
-    line-height: 1.55;
-  }
-
-  .week-card .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: auto;
-    padding-top: 0.85rem;
-  }
-
-  .week-card .tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.25rem 0.65rem;
-    border-radius: 6px;
-    letter-spacing: 0.01em;
-  }
-
-  .week-card[data-unit="drawing"] .tag { background: var(--drawing-light); color: var(--drawing-bold); }
-  .week-card[data-unit="painting"] .tag { background: var(--painting-light); color: var(--painting-bold); }
-  .week-card[data-unit="printmaking"] .tag { background: var(--printmaking-light); color: var(--printmaking-bold); }
-  .week-card[data-unit="threed"] .tag { background: var(--threed-light); color: var(--threed-bold); }
-  .week-card[data-unit="capstone"] .tag { background: var(--capstone-light); color: var(--capstone-bold); }
-
-  /* ── Spotlight ── */
-  .spotlight {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 3rem 2.5rem 3rem;
-  }
-
-  .spotlight-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
-
-  .spotlight-header h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .spotlight-header .subtitle {
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
-    color: var(--painting);
-    font-weight: 600;
-  }
-
-  .spotlight-rail {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .spotlight-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 1px 4px rgba(26, 26, 46, 0.06);
-    transition: box-shadow var(--transition), transform var(--transition);
-  }
-
-  .spotlight-card:hover {
-    box-shadow: 0 8px 24px rgba(26, 26, 46, 0.1);
-    transform: translateY(-3px);
-  }
-
-  .spotlight-card .card-image {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-  }
-
-  .spotlight-card .card-image .placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-
-  .spotlight-card:nth-child(1) .placeholder { background: linear-gradient(135deg, var(--printmaking-light), #D4C8F0); color: var(--printmaking-bold); }
-  .spotlight-card:nth-child(2) .placeholder { background: linear-gradient(135deg, var(--drawing-light), #B8E4E4); color: var(--drawing-bold); }
-  .spotlight-card:nth-child(3) .placeholder { background: linear-gradient(135deg, var(--capstone-light), #F5D88E); color: var(--capstone-bold); }
-
-  .spotlight-card .card-body { padding: 1rem 1.25rem 1.25rem; }
-
-  .spotlight-card .card-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-  }
-
-  .spotlight-card .card-desc {
-    font-size: 0.82rem;
-    color: var(--text-mid);
-    margin-top: 0.25rem;
-    line-height: 1.5;
-  }
-
-  /* ── Accordion ── */
-  .resources {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2.5rem 4rem;
-  }
-
-  .resources h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.25rem;
-  }
-
-  .accordion-item {
-    border-radius: var(--radius);
-    margin-bottom: 0.6rem;
-    background: var(--surface);
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(26, 26, 46, 0.05);
-  }
-
-  .accordion-trigger {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem 1.4rem;
-    background: none;
-    border: none;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text);
-    cursor: pointer;
-    transition: background var(--transition);
-  }
-
-  .accordion-trigger:hover { background: rgba(0,0,0,0.02); }
-
-  .accordion-trigger .chevron {
-    width: 20px;
-    height: 20px;
-    transition: transform var(--transition);
-    color: var(--text-light);
-  }
-
-  .accordion-item.open .accordion-trigger .chevron { transform: rotate(180deg); }
-
-  .accordion-content {
-    display: none;
-    padding: 0 1.4rem 1.4rem;
-    font-size: 0.9rem;
-    color: var(--text-mid);
-    line-height: 1.7;
-  }
-
-  .accordion-item.open .accordion-content { display: block; }
-
-  /* ── Footer ── */
-  .site-footer {
-    text-align: center;
-    padding: 2.5rem;
-    font-size: 0.78rem;
-    color: var(--text-light);
-    font-weight: 500;
-    border-top: 2px solid var(--border);
-  }
-
-  .site-footer .footer-mark {
-    font-family: 'Caveat', cursive;
-    font-size: 1.45rem;
-    color: var(--painting);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.35rem;
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .site-header { padding: 0.85rem 1.25rem; }
-    .hero { padding: 3.5rem 1.25rem 1.5rem; }
-    .unit-section { padding: 0 1.25rem; }
-    .spotlight { padding: 2rem 1.25rem; }
-    .resources { padding: 0 1.25rem 3rem; }
-    .unit-header .unit-num { font-size: 2.2rem; }
-    .hero::before, .hero::after { display: none; }
-  }
-</style>
+<title>Visual Art I — Holy Redeemer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Mono&family=Rock+Salt&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../sketchbook.css">
 </head>
-<body>
+<body class="c-pink">
 
 <header class="site-header">
-  <a href="index.html" class="logo">Visual Art <span>Foundations 1</span></a>
+  <a href="index.html" class="logo">Visual Art <span>I</span></a>
   <nav>
     <ul class="site-nav">
       <li><a href="../">← All Courses</a></li>
@@ -583,10 +26,31 @@
 <section class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">9th Grade Visual Art Class</div>
-    <h1>Every week builds toward something <em>real.</em></h1>
+    <h1>Every week builds toward something <em>real.
+<svg class="dd" viewBox="0 0 300 30" preserveAspectRatio="none" style="left:0;bottom:-8px;width:100%;height:20px"><path d="M4 18 C 60 8, 140 26, 210 12 S 280 16, 296 14 M30 24 C 110 18, 200 26, 280 22" stroke="#3A3A3A" stroke-width="4"/></svg>
+</em></h1>
     <p>Drawing, painting, printmaking, sculpture — and a mural that lives in this school long after you leave.</p>
   </div>
 </section>
+
+
+<div class="wrap">
+<section class="page">
+<div class="tag">Sections 1 &amp; 2 · Semester · 18 weeks</div>
+<h2>Scope &amp; Sequence</h2>
+<div class="sub">Learn to see like an artist</div>
+<div class="btns"><a class="pop" href="../syllabi/Visual_Art_I_Syllabus.pdf" target="_blank">Syllabus PDF</a><a href="../syllabi/Visual_Art_I_Syllabus.docx">Edit in Word</a></div>
+<ol class="units">
+<li><div class="n">01</div><div><h3>Line &amp; Value</h3><div class="p">Blind Contour Portrait Swap · &quot;Draw Your Grail&quot;</div></div><div class="wk">wk 1–3</div></li>
+<li><div class="n">02</div><div><h3>Observation &amp; Texture</h3><div class="p">&quot;What&#x27;s In My Bag&quot; Still Life · Texture Hunt &amp; Draw</div></div><div class="wk">wk 4–6</div></li>
+<li><div class="n">03</div><div><h3>Color &amp; Painting</h3><div class="p">Design a Product Label · Mood Painting (Monochromatic)</div></div><div class="wk">wk 7–9</div></li>
+<li><div class="n">04</div><div><h3>Space &amp; Identity</h3><div class="p">Imaginary World Landscape · Identity Portrait (Any Style)</div></div><div class="wk">wk 10–12</div></li>
+<li><div class="n">05</div><div><h3>Mixed Media &amp; Message</h3><div class="p">Social Commentary Collage</div></div><div class="wk">wk 13–15</div></li>
+<li><div class="n">06</div><div><h3>Portfolio &amp; Showcase</h3><div class="p">Personal Zine / Mini Portfolio</div></div><div class="wk">wk 16–18</div></li>
+</ol>
+<a class="hub" href="projects.html">→ open the SmartBoard hub</a>
+</section>
+</div>
 
 <!-- ═══════════ PRE-LESSON: WEEK 00 ═══════════ -->
 <div class="unit-section">
@@ -622,41 +86,41 @@
   </div>
   <div class="weeks-grid">
 
-    <a href="week-01.html" class="week-card" data-unit="drawing">
+    <div class="week-card" data-unit="drawing">
       <div class="card-image"><div class="placeholder"><span class="week-big">01</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Mark-Making &amp; Line</div>
         <div class="card-desc">Blind contour portraits of each other, continuous line, timed rounds. Everyone's drawing looks weird — that's the point.</div>
         <div class="card-tags"><span class="tag">Line</span><span class="tag">Contour</span><span class="tag">Timed Rounds</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-02.html" class="week-card" data-unit="drawing">
+    <div class="week-card" data-unit="drawing">
       <div class="card-image"><div class="placeholder"><span class="week-big">02</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Shape &amp; Value</div>
         <div class="card-desc">Sneakers under dramatic lighting. Shoes off your feet, lamp on the table, pencil in your hand.</div>
         <div class="card-tags"><span class="tag">Value Scale</span><span class="tag">Light &amp; Shadow</span><span class="tag">Observation</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-03.html" class="week-card" data-unit="drawing">
+    <div class="week-card" data-unit="drawing">
       <div class="card-image"><div class="placeholder"><span class="week-big">03</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Observational Still Life</div>
         <div class="card-desc">A self-portrait made of objects. Empty your pockets — earbuds, keys, gum — and draw what you carry through the world.</div>
         <div class="card-tags"><span class="tag">Still Life</span><span class="tag">Composition</span><span class="tag">Personal Objects</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-04.html" class="week-card" data-unit="drawing">
+    <div class="week-card" data-unit="drawing">
       <div class="card-image"><div class="placeholder"><span class="week-big">04</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Texture &amp; Expression</div>
         <div class="card-desc">Scavenger hunt the school for textures, then redraw something from your world in a style that breaks the rules.</div>
         <div class="card-tags"><span class="tag">Texture</span><span class="tag">Frottage</span><span class="tag">Student Choice</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -672,41 +136,41 @@
   </div>
   <div class="weeks-grid">
 
-    <a href="week-05.html" class="week-card" data-unit="painting">
+    <div class="week-card" data-unit="painting">
       <div class="card-image"><div class="placeholder"><span class="week-big">05</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Color Theory: Mix to Match</div>
         <div class="card-desc">No color wheel worksheets. Mix to match your own skin tone, a snack wrapper, or a sneaker colorway.</div>
         <div class="card-tags"><span class="tag">Color Mixing</span><span class="tag">Color Theory</span><span class="tag">Primary Colors</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-06.html" class="week-card" data-unit="painting">
+    <div class="week-card" data-unit="painting">
       <div class="card-image"><div class="placeholder"><span class="week-big">06</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Color Relationships &amp; Mood</div>
         <div class="card-desc">Same image, three palettes — warm, cool, complementary. Color carries feeling. Album cover framing works great here.</div>
         <div class="card-tags"><span class="tag">Warm &amp; Cool</span><span class="tag">Complementary</span><span class="tag">Mood</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-07.html" class="week-card" data-unit="painting">
+    <div class="week-card" data-unit="painting">
       <div class="card-image"><div class="placeholder"><span class="week-big">07</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Brushwork &amp; Scale</div>
         <div class="card-desc">Go big, go loose. Large-format expressive painting where the mark itself is the subject.</div>
         <div class="card-tags"><span class="tag">Brushwork</span><span class="tag">Large Format</span><span class="tag">Expression</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-08.html" class="week-card" data-unit="painting">
+    <div class="week-card" data-unit="painting">
       <div class="card-image"><div class="placeholder"><span class="week-big">08</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Color Remix Project</div>
         <div class="card-desc">Reimagine a logo, product, or space you know in a completely different palette. Your choice, your colors.</div>
         <div class="card-tags"><span class="tag">Student Choice</span><span class="tag">Design Thinking</span><span class="tag">Application</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -722,32 +186,32 @@
   </div>
   <div class="weeks-grid">
 
-    <a href="week-09.html" class="week-card" data-unit="printmaking">
+    <div class="week-card" data-unit="printmaking">
       <div class="card-image"><div class="placeholder"><span class="week-big">09</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Relief Printing: Personal Icon</div>
         <div class="card-desc">Design a personal symbol, carve it into foam, and pull prints in multiple colors. Something you'd put on a sticker.</div>
         <div class="card-tags"><span class="tag">Relief</span><span class="tag">Foam Plate</span><span class="tag">Symbol Design</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-10.html" class="week-card" data-unit="printmaking">
+    <div class="week-card" data-unit="printmaking">
       <div class="card-image"><div class="placeholder"><span class="week-big">10</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Editions &amp; Layering</div>
         <div class="card-desc">Two-color prints and registration. Repetition isn't just repetition — it's a design tool.</div>
         <div class="card-tags"><span class="tag">Two-Color</span><span class="tag">Registration</span><span class="tag">Editions</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-11.html" class="week-card" data-unit="printmaking">
+    <div class="week-card" data-unit="printmaking">
       <div class="card-image"><div class="placeholder"><span class="week-big">11</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Pattern &amp; Scale</div>
         <div class="card-desc">Turn your icon into a repeating pattern — wrapping paper, fabric, a wall. One small carve becomes something big.</div>
         <div class="card-tags"><span class="tag">Pattern</span><span class="tag">Repetition</span><span class="tag">Surface Design</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -763,23 +227,23 @@
   </div>
   <div class="weeks-grid">
 
-    <a href="week-12.html" class="week-card" data-unit="threed">
+    <div class="week-card" data-unit="threed">
       <div class="card-image"><div class="placeholder"><span class="week-big">12</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Paper &amp; Cardboard Relief</div>
         <div class="card-desc">Cut, score, fold, layer. Build off a flat surface and learn that flat and 3D aren't separate worlds.</div>
         <div class="card-tags"><span class="tag">Relief</span><span class="tag">Paper Sculpture</span><span class="tag">Scoring</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-13.html" class="week-card" data-unit="threed">
+    <div class="week-card" data-unit="threed">
       <div class="card-image"><div class="placeholder"><span class="week-big">13</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Collaborative Build</div>
         <div class="card-desc">Small groups, one connected structure. Practice negotiating a shared design — the exact skill you need for the mural.</div>
         <div class="card-tags"><span class="tag">Collaboration</span><span class="tag">Construction</span><span class="tag">Group Work</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -795,32 +259,32 @@
   </div>
   <div class="weeks-grid">
 
-    <a href="week-14.html" class="week-card" data-unit="capstone">
+    <div class="week-card" data-unit="capstone">
       <div class="card-image"><div class="placeholder"><span class="week-big">14</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Design &amp; Pitch</div>
         <div class="card-desc">Teams develop panel concepts, then pitch to the class. Your idea gets taken seriously. Everything you learned shows up here.</div>
         <div class="card-tags"><span class="tag">Planning</span><span class="tag">Pitching</span><span class="tag">Teamwork</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-15.html" class="week-card" data-unit="capstone">
+    <div class="week-card" data-unit="capstone">
       <div class="card-image"><div class="placeholder"><span class="week-big">15</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Transfer &amp; Block-In</div>
         <div class="card-desc">Drawing onto the panel and laying in big shapes. Scale is a whole different beast — this is where you find out.</div>
         <div class="card-tags"><span class="tag">Scale</span><span class="tag">Transfer</span><span class="tag">Base Color</span></div>
       </div>
-    </a>
+    </div>
 
-    <a href="week-16.html" class="week-card" data-unit="capstone">
+    <div class="week-card" data-unit="capstone">
       <div class="card-image"><div class="placeholder"><span class="week-big">16</span><span class="placeholder-text">student work photo</span></div></div>
       <div class="card-body">
         <div class="card-title">Detail, Finishing &amp; Installation</div>
         <div class="card-desc">Refine, photograph, carry it out, hang it up. This goes in the hallway. This is your legacy.</div>
         <div class="card-tags"><span class="tag">Finishing</span><span class="tag">Installation</span><span class="tag">Exhibition</span></div>
       </div>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -866,7 +330,7 @@
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
     <div class="accordion-content">
-      <p>Visual Art Foundations is a one-semester introductory course that moves through drawing, painting, printmaking, and sculpture before culminating in a collaborative hallway mural. You will build real skills, make real art, and leave real work installed in this school. Grading is based on process, effort, craftsmanship, and growth — not talent.</p>
+      <p>Visual Art I is a one-semester introductory course that moves through drawing, painting, printmaking, and sculpture before culminating in a collaborative hallway mural. You will build real skills, make real art, and leave real work installed in this school. Grading is based on process, effort, craftsmanship, and growth — not talent.</p>
     </div>
   </div>
 
@@ -903,7 +367,7 @@
 
 <footer class="site-footer">
   <span class="footer-mark">Your school. Your art. Your legacy.</span>
-  Visual Art Foundations 1 · Holy Redeemer
+  Visual Art I · Holy Redeemer
 </footer>
 
 </body>

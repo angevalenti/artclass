@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Visual Art Foundations 1 — Classroom Hub</title>
+  <title>Visual Art I — Classroom Hub</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Mono&family=Rock+Salt&display=swap" rel="stylesheet">
 
-  <style>
-    body { margin: 0; background: #faf8f6; }
-  </style>
+  <link rel="stylesheet" href="../sketchbook.css">
 
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -24,27 +22,27 @@
     const { useState } = React;
 
     const COLORS = {
-      bg: "#faf8f6",
-      bgWarm: "#f5f0ec",
-      surface: "#ffffff",
-      surfaceHover: "#f9f5f2",
-      border: "rgba(60, 50, 40, 0.08)",
-      borderHover: "rgba(60, 50, 40, 0.15)",
-      text: "#2a2520",
-      textSoft: "#5c534a",
-      textMuted: "rgba(60, 50, 40, 0.45)",
-      purple: "#9b6dff",
-      purpleSoft: "#ece4ff",
-      pink: "#e8659a",
-      pinkSoft: "#fce4ef",
-      sky: "#4da8da",
-      skySoft: "#e0f1fa",
-      mint: "#3dbf8e",
-      mintSoft: "#ddf5eb",
-      coral: "#e88358",
-      coralSoft: "#fde8df",
-      gold: "#d4a030",
-      goldSoft: "#faf0d5",
+      bg: "#F6F4EF",
+      bgWarm: "#ECE9E2",
+      surface: "#FFFFFF",
+      surfaceHover: "#ECE9E2",
+      border: "#111111",
+      borderHover: "#111111",
+      text: "#111111",
+      textSoft: "#6B6B6B",
+      textMuted: "#6B6B6B",
+      purple: "#111111",
+      purpleSoft: "#FF6FAE",
+      pink: "#111111",
+      pinkSoft: "#FF6FAE",
+      sky: "#111111",
+      skySoft: "#FF6FAE",
+      mint: "#111111",
+      mintSoft: "#FF6FAE",
+      coral: "#111111",
+      coralSoft: "#FF6FAE",
+      gold: "#111111",
+      goldSoft: "#FF6FAE",
     };
 
     const PROJECTS = [
@@ -55,8 +53,8 @@
         subtitle: "Build your own tool before you make your first mark.",
         accent: COLORS.purple,
         accentSoft: COLORS.purpleSoft,
-        gradientFrom: "rgba(155, 109, 255, 0.08)",
-        gradientTo: "rgba(232, 101, 154, 0.06)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~2 weeks",
         essential: "What does it mean to build the thing you create with?",
         overview:
@@ -146,8 +144,8 @@
         subtitle: "See yourself. Really see yourself.",
         accent: COLORS.pink,
         accentSoft: COLORS.pinkSoft,
-        gradientFrom: "rgba(232, 101, 154, 0.08)",
-        gradientTo: "rgba(155, 109, 255, 0.05)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~3 weeks",
         essential: "What do you see when you actually look?",
         overview: "Students create a large-scale charcoal self-portrait, learning to observe proportion, value, and detail. This project builds foundational drawing skills while pushing students to slow down and really look.",
@@ -160,8 +158,8 @@
         subtitle: "Design something people would actually hang on their wall.",
         accent: COLORS.sky,
         accentSoft: COLORS.skySoft,
-        gradientFrom: "rgba(77, 168, 218, 0.08)",
-        gradientTo: "rgba(61, 191, 142, 0.05)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~3 weeks",
         essential: "How does visual design make you feel something before you read a single word?",
         overview: "Students design a hand-drawn concert poster or album cover for a real or imagined artist, exploring typography, composition, color theory, and the relationship between music and visual art.",
@@ -174,8 +172,8 @@
         subtitle: "Wearable art. Function meets expression.",
         accent: COLORS.mint,
         accentSoft: COLORS.mintSoft,
-        gradientFrom: "rgba(61, 191, 142, 0.08)",
-        gradientTo: "rgba(77, 168, 218, 0.05)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~2 weeks",
         essential: "Can everyday objects become art — and can art be something you wear?",
         overview: "Students customize a canvas sneaker using acrylic paint, turning a functional object into a personal art piece. This project explores surface design, planning on irregular forms, and the intersection of art and fashion.",
@@ -188,8 +186,8 @@
         subtitle: "One print. Fifty prints. One wall.",
         accent: COLORS.coral,
         accentSoft: COLORS.coralSoft,
-        gradientFrom: "rgba(232, 131, 88, 0.08)",
-        gradientTo: "rgba(212, 160, 48, 0.05)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~3 weeks",
         essential: "What happens when individual art becomes collective?",
         overview: "Each student carves and prints a block that becomes one tile in a large-scale collaborative mural. The project teaches printmaking technique while building toward a permanent installation in the school.",
@@ -202,8 +200,8 @@
         subtitle: "Leave your mark. Literally.",
         accent: COLORS.gold,
         accentSoft: COLORS.goldSoft,
-        gradientFrom: "rgba(212, 160, 48, 0.08)",
-        gradientTo: "rgba(232, 131, 88, 0.05)",
+        gradientFrom: "rgba(17,17,17,0.04)",
+        gradientTo: "rgba(17,17,17,0.04)",
         duration: "~4 weeks",
         essential: "What does it mean to make art that belongs to a place?",
         overview: "The culminating project: students collaborate to design and paint a large-scale mural in a school hallway. This capstone brings together every skill learned throughout the year — drawing, painting, design, collaboration — and results in permanent, visible art that transforms the building.",
@@ -221,17 +219,17 @@
           padding: "0 2rem", display: "flex", alignItems: "center", height: 58, gap: "2rem",
         }}>
           <a href="index.html" style={{
-            fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.72rem",
+            fontFamily: "'Kalam', cursive", fontSize: "0.72rem",
             color: COLORS.textMuted, textDecoration: "none",
             whiteSpace: "nowrap", flexShrink: 0,
           }}>
             ← Overview
           </a>
           <div onClick={() => onNavigate("home")} style={{
-            fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.2rem",
+            fontFamily: "'Kalam', cursive", fontSize: "1.2rem",
             cursor: "pointer", color: COLORS.text, whiteSpace: "nowrap",
           }}>
-            Visual Art Foundations 1
+            Visual Art I
           </div>
           <div style={{
             display: "flex", gap: "0.3rem", overflowX: "auto", flex: 1,
@@ -242,8 +240,8 @@
                 background: current === p.id ? p.accentSoft : "transparent",
                 border: "none",
                 color: current === p.id ? p.accent : COLORS.textMuted,
-                padding: "0.4rem 0.7rem", borderRadius: 20,
-                fontSize: "0.72rem", fontFamily: "'Space Grotesk', sans-serif",
+                padding: "0.4rem 0.7rem", borderRadius: 0,
+                fontSize: "0.72rem", fontFamily: "'Kalam', cursive",
                 cursor: "pointer", whiteSpace: "nowrap",
                 fontWeight: current === p.id ? 600 : 400, transition: "all 0.2s",
               }}>
@@ -264,38 +262,38 @@
             justifyContent: "center", alignItems: "center", textAlign: "center",
             padding: "6rem 2rem 4rem", position: "relative",
             background: `
-              radial-gradient(ellipse at 25% 75%, rgba(155, 109, 255, 0.12) 0%, transparent 50%),
-              radial-gradient(ellipse at 75% 25%, rgba(232, 101, 154, 0.1) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 50%, rgba(77, 168, 218, 0.07) 0%, transparent 60%)
+              radial-gradient(ellipse at 25% 75%, transparent 0%, transparent 50%),
+              radial-gradient(ellipse at 75% 25%, transparent 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, transparent 0%, transparent 60%)
             `,
           }}>
             {/* Floating decorative circles */}
             <div style={{
-              position: "absolute", width: 300, height: 300, borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(155, 109, 255, 0.06) 0%, transparent 70%)",
+              position: "absolute", width: 300, height: 300, borderRadius: 0,
+              background: "none",
               top: "15%", left: "5%", pointerEvents: "none",
             }} />
             <div style={{
-              position: "absolute", width: 200, height: 200, borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(232, 101, 154, 0.06) 0%, transparent 70%)",
+              position: "absolute", width: 200, height: 200, borderRadius: 0,
+              background: "none",
               bottom: "20%", right: "10%", pointerEvents: "none",
             }} />
 
             <div style={{
               fontSize: "0.72rem", letterSpacing: "0.3em", textTransform: "uppercase",
               color: COLORS.purple, marginBottom: "1.25rem",
-              fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+              fontFamily: "'Space Mono', monospace", fontWeight: 600,
             }}>
               Holy Redeemer Visual Arts
             </div>
             <h1 style={{
-              fontFamily: "'Covered By Your Grace', cursive",
+              fontFamily: "'Kalam', cursive",
               fontSize: "clamp(2.8rem, 7vw, 5rem)", fontWeight: 400,
               lineHeight: 1.08, maxWidth: 650, color: COLORS.text,
             }}>
               Visual Art{" "}
               <span style={{
-                background: `linear-gradient(135deg, ${COLORS.purple}, ${COLORS.pink}, ${COLORS.coral})`,
+                background: COLORS.text,
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
               }}>
                 Foundations
@@ -303,7 +301,7 @@
             </h1>
             <p style={{
               marginTop: "1.25rem", fontSize: "1rem", color: COLORS.textSoft,
-              maxWidth: 400, lineHeight: 1.65, fontFamily: "'Space Grotesk', sans-serif",
+              maxWidth: 400, lineHeight: 1.65, fontFamily: "'Kalam', cursive",
             }}>
               Six projects. One year. Every piece lives in the building — not in a folder.
             </p>
@@ -312,7 +310,7 @@
             <div style={{
               position: "absolute", bottom: "2.5rem",
               fontSize: "0.7rem", letterSpacing: "0.15em",
-              color: COLORS.textMuted, fontFamily: "'Space Grotesk', sans-serif",
+              color: COLORS.textMuted, fontFamily: "'Kalam', cursive",
               animation: "float 3s ease-in-out infinite",
             }}>
               ↓
@@ -332,10 +330,10 @@
                 { label: "Every Wall is a Canvas", color: COLORS.mint, bg: COLORS.mintSoft },
               ].map((item, i) => (
                 <div key={i} style={{
-                  padding: "0.55rem 1.1rem", borderRadius: 100,
+                  padding: "0.55rem 1.1rem", borderRadius: 0,
                   background: item.bg, color: item.color,
                   fontSize: "0.78rem", fontWeight: 600,
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Kalam', cursive",
                 }}>
                   {item.label}
                 </div>
@@ -347,7 +345,7 @@
               {PROJECTS.map((p) => (
                 <div key={p.id} onClick={() => onNavigate(p.id)} style={{
                   display: "flex", alignItems: "center", gap: "1.25rem",
-                  padding: "1.35rem 1.75rem", borderRadius: 16,
+                  padding: "1.35rem 1.75rem", borderRadius: 0,
                   background: COLORS.surface,
                   border: `1px solid ${COLORS.border}`,
                   cursor: "pointer", transition: "all 0.3s ease",
@@ -365,10 +363,10 @@
                   }}
                 >
                   <div style={{
-                    width: 44, height: 44, borderRadius: 12,
+                    width: 44, height: 44, borderRadius: 0,
                     background: p.accentSoft, display: "flex",
                     alignItems: "center", justifyContent: "center",
-                    fontFamily: "'Covered By Your Grace', cursive",
+                    fontFamily: "'Kalam', cursive",
                     fontSize: "1.1rem", color: p.accent,
                     flexShrink: 0,
                   }}>
@@ -376,7 +374,7 @@
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{
-                      fontFamily: "'Covered By Your Grace', cursive",
+                      fontFamily: "'Kalam', cursive",
                       fontSize: "1.2rem", color: COLORS.text,
                       marginBottom: "0.15rem",
                     }}>
@@ -384,7 +382,7 @@
                     </div>
                     <div style={{
                       fontSize: "0.78rem", color: COLORS.textMuted,
-                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontFamily: "'Kalam', cursive",
                       fontStyle: "italic", overflow: "hidden",
                       textOverflow: "ellipsis", whiteSpace: "nowrap",
                     }}>
@@ -393,7 +391,7 @@
                   </div>
                   <div style={{
                     fontSize: "0.68rem", color: COLORS.textMuted,
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Kalam', cursive",
                     whiteSpace: "nowrap", flexShrink: 0,
                   }}>
                     {p.duration}
@@ -407,7 +405,7 @@
           {/* Footer */}
           <div style={{
             textAlign: "center", padding: "3.5rem 2rem",
-            fontFamily: "'Covered By Your Grace', cursive",
+            fontFamily: "'Kalam', cursive",
             fontSize: "1rem",
             color: COLORS.textMuted,
           }}>
@@ -422,12 +420,12 @@
       const hasContent = p.days.length > 0;
 
       return (
-        <div style={{ paddingTop: 58, background: COLORS.bg }}>
+        <div style={{ paddingTop: 58, background: "transparent" }}>
           {/* Project Hero */}
           <div style={{
             padding: "4.5rem 2rem 3.5rem", maxWidth: 780, margin: "0 auto",
             borderBottom: `1px solid ${COLORS.border}`,
-            background: `linear-gradient(180deg, ${p.gradientFrom} 0%, transparent 100%)`,
+            background: "transparent",
           }}>
             <div style={{
               display: "flex", alignItems: "center", gap: "0.75rem",
@@ -435,28 +433,28 @@
             }}>
               <span style={{
                 fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase",
-                padding: "0.35rem 0.85rem", borderRadius: 100,
+                padding: "0.35rem 0.85rem", borderRadius: 0,
                 background: p.accentSoft, color: p.accent,
-                fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                fontFamily: "'Space Mono', monospace", fontWeight: 600,
               }}>
                 Project {p.num}
               </span>
               <span style={{
                 fontSize: "0.72rem", color: COLORS.textMuted,
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: "'Kalam', cursive",
               }}>
                 {p.duration}
               </span>
             </div>
             <h1 style={{
-              fontFamily: "'Covered By Your Grace', cursive",
+              fontFamily: "'Kalam', cursive",
               fontSize: "clamp(2rem, 4.5vw, 3rem)", fontWeight: 400,
               color: COLORS.text, lineHeight: 1.12, marginBottom: "0.6rem",
             }}>
               {p.title}
             </h1>
             <p style={{
-              fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.05rem",
+              fontFamily: "'Kalam', cursive", fontSize: "1.05rem",
               color: COLORS.textSoft, lineHeight: 1.5,
             }}>
               {p.subtitle}
@@ -473,13 +471,13 @@
                   display: "inline-block", fontSize: "0.65rem", letterSpacing: "0.2em",
                   textTransform: "uppercase", color: COLORS.surface,
                   background: p.accent, padding: "0.3rem 0.7rem",
-                  borderRadius: 100, marginBottom: "1rem",
-                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                  borderRadius: 0, marginBottom: "1rem",
+                  fontFamily: "'Space Mono', monospace", fontWeight: 600,
                 }}>
                   Essential Question
                 </div>
                 <div style={{
-                  fontFamily: "'Covered By Your Grace', cursive", fontSize: "1.55rem",
+                  fontFamily: "'Kalam', cursive", fontSize: "1.55rem",
                   color: COLORS.text, lineHeight: 1.4,
                 }}>
                   {p.essential}
@@ -493,13 +491,13 @@
                 <div style={{
                   fontSize: "0.78rem", fontWeight: 600,
                   color: p.accent, marginBottom: "0.75rem",
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Kalam', cursive",
                 }}>
                   Overview
                 </div>
                 <p style={{
                   fontSize: "0.92rem", color: COLORS.textSoft,
-                  lineHeight: 1.75, fontFamily: "'Space Grotesk', sans-serif",
+                  lineHeight: 1.75, fontFamily: "'Kalam', cursive",
                   maxWidth: 620,
                 }}>
                   {p.overview}
@@ -513,14 +511,14 @@
                 <div style={{
                   fontSize: "0.78rem", fontWeight: 600,
                   color: p.accent, marginBottom: "1.25rem",
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Kalam', cursive",
                 }}>
                   Day-by-Day
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   {p.days.map((d, i) => (
                     <div key={i} style={{
-                      borderRadius: 16, overflow: "hidden",
+                      borderRadius: 0, overflow: "hidden",
                       background: COLORS.surface, border: `1px solid ${COLORS.border}`,
                       boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
                     }}>
@@ -529,7 +527,7 @@
                         width: "100%", height: d.image ? 220 : 160,
                         background: d.image
                           ? `url(${d.image}) center/cover no-repeat`
-                          : `linear-gradient(135deg, ${p.accentSoft}, ${COLORS.bgWarm})`,
+                          : p.accentSoft,
                         display: "flex", alignItems: "center", justifyContent: "center",
                         position: "relative",
                       }}>
@@ -547,7 +545,7 @@
                             </svg>
                             <span style={{
                               fontSize: "0.68rem", color: p.accent, opacity: 0.5,
-                              fontFamily: "'Space Grotesk', sans-serif",
+                              fontFamily: "'Kalam', cursive",
                               maxWidth: 220, textAlign: "center", lineHeight: 1.4,
                               fontStyle: "italic",
                             }}>
@@ -565,14 +563,14 @@
                           <span style={{
                             fontSize: "0.65rem", fontWeight: 600,
                             color: COLORS.surface, background: p.accent,
-                            padding: "0.2rem 0.55rem", borderRadius: 100,
-                            fontFamily: "'Space Grotesk', sans-serif",
+                            padding: "0.2rem 0.55rem", borderRadius: 0,
+                            fontFamily: "'Kalam', cursive",
                             whiteSpace: "nowrap",
                           }}>
                             {d.day}
                           </span>
                           <span style={{
-                            fontFamily: "'Covered By Your Grace', cursive",
+                            fontFamily: "'Kalam', cursive",
                             fontSize: "1.1rem", color: COLORS.text,
                           }}>
                             {d.title}
@@ -580,7 +578,7 @@
                         </div>
                         <p style={{
                           fontSize: "0.82rem", color: COLORS.textSoft,
-                          lineHeight: 1.65, fontFamily: "'Space Grotesk', sans-serif",
+                          lineHeight: 1.65, fontFamily: "'Kalam', cursive",
                         }}>
                           {d.detail}
                         </p>
@@ -598,7 +596,7 @@
                   <div style={{
                     fontSize: "0.78rem", fontWeight: 600,
                     color: p.accent, marginBottom: "1rem",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Kalam', cursive",
                   }}>
                     Materials
                   </div>
@@ -607,10 +605,10 @@
                   }}>
                     {p.materials.map((m, i) => (
                       <div key={i} style={{
-                        padding: "0.5rem 0.9rem", borderRadius: 100,
+                        padding: "0.5rem 0.9rem", borderRadius: 0,
                         background: p.accentSoft,
                         fontSize: "0.78rem", color: COLORS.textSoft,
-                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontFamily: "'Kalam', cursive",
                       }}>
                         {m}
                       </div>
@@ -627,26 +625,26 @@
                   <div style={{
                     fontSize: "0.78rem", fontWeight: 600,
                     color: p.accent, marginBottom: "1rem",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Kalam', cursive",
                   }}>
                     Artist References
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     {p.artists.map((a, i) => (
                       <div key={i} style={{
-                        padding: "1rem 1.25rem", borderRadius: 14,
+                        padding: "1rem 1.25rem", borderRadius: 0,
                         background: COLORS.surface, border: `1px solid ${COLORS.border}`,
                         boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
                       }}>
                         <div style={{
-                          fontFamily: "'Covered By Your Grace', cursive",
+                          fontFamily: "'Kalam', cursive",
                           fontSize: "1rem", color: COLORS.text, marginBottom: "0.2rem",
                         }}>
                           {a.name}
                         </div>
                         <div style={{
                           fontSize: "0.78rem", color: COLORS.textMuted,
-                          fontFamily: "'Space Grotesk', sans-serif", fontStyle: "italic",
+                          fontFamily: "'Kalam', cursive", fontStyle: "italic",
                         }}>
                           {a.note}
                         </div>
@@ -664,19 +662,19 @@
                   <div style={{
                     fontSize: "0.78rem", fontWeight: 600,
                     color: p.accent, marginBottom: "1rem",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Kalam', cursive",
                   }}>
                     Video References
                   </div>
                   {p.videos.map((v, i) => (
                     <div key={i} style={{
-                      padding: "1rem 1.25rem", borderRadius: 14,
+                      padding: "1rem 1.25rem", borderRadius: 0,
                       background: COLORS.surface, border: `1px solid ${COLORS.border}`,
                       display: "flex", alignItems: "center", gap: "1rem",
                       boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
                     }}>
                       <div style={{
-                        width: 40, height: 40, borderRadius: 12,
+                        width: 40, height: 40, borderRadius: 0,
                         background: p.accentSoft, display: "flex",
                         alignItems: "center", justifyContent: "center",
                         color: p.accent, fontSize: "0.85rem", flexShrink: 0,
@@ -686,13 +684,13 @@
                       <div>
                         <div style={{
                           fontSize: "0.88rem", color: COLORS.text,
-                          fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                          fontFamily: "'Kalam', cursive", fontWeight: 600,
                         }}>
                           {v.title}
                         </div>
                         <div style={{
                           fontSize: "0.72rem", color: COLORS.textMuted,
-                          fontFamily: "'Space Grotesk', sans-serif",
+                          fontFamily: "'Kalam', cursive",
                         }}>
                           {v.source} — {v.note}
                         </div>
@@ -708,12 +706,12 @@
                   <div style={{
                     fontSize: "0.78rem", fontWeight: 600,
                     color: p.accent, marginBottom: "1rem",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Kalam', cursive",
                   }}>
                     Vocabulary
                   </div>
                   <div style={{
-                    padding: "1.25rem 1.5rem", borderRadius: 14,
+                    padding: "1.25rem 1.5rem", borderRadius: 0,
                     background: COLORS.surface, border: `1px solid ${COLORS.border}`,
                     boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
                   }}>
@@ -724,7 +722,7 @@
                         borderBottom: i < p.vocabulary.length - 1 ? `1px solid ${COLORS.border}` : "none",
                       }}>
                         <span style={{
-                          fontFamily: "'Covered By Your Grace', cursive",
+                          fontFamily: "'Kalam', cursive",
                           fontSize: "0.95rem", color: p.accent,
                           minWidth: 130, flexShrink: 0,
                         }}>
@@ -732,7 +730,7 @@
                         </span>
                         <span style={{
                           fontSize: "0.82rem", color: COLORS.textSoft,
-                          fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1.5,
+                          fontFamily: "'Kalam', cursive", lineHeight: 1.5,
                         }}>
                           {v.def}
                         </span>
@@ -747,12 +745,12 @@
               maxWidth: 780, margin: "0 auto", padding: "4rem 2rem", textAlign: "center",
             }}>
               <div style={{
-                padding: "3rem 2rem", borderRadius: 20,
-                background: `linear-gradient(135deg, ${p.gradientFrom}, ${p.gradientTo})`,
+                padding: "3rem 2rem", borderRadius: 0,
+                background: COLORS.bgWarm,
                 border: `1px solid ${COLORS.border}`,
               }}>
                 <div style={{
-                  fontFamily: "'Covered By Your Grace', cursive",
+                  fontFamily: "'Kalam', cursive",
                   fontSize: "1.5rem",
                   color: COLORS.text, marginBottom: "0.75rem",
                 }}>
@@ -760,16 +758,16 @@
                 </div>
                 <p style={{
                   fontSize: "0.88rem", color: COLORS.textSoft, lineHeight: 1.6,
-                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontFamily: "'Kalam', cursive",
                   maxWidth: 460, margin: "0 auto 1.25rem",
                 }}>
                   {p.overview}
                 </p>
                 <div style={{
                   display: "inline-block", padding: "0.4rem 1rem",
-                  borderRadius: 100, background: p.accentSoft,
+                  borderRadius: 0, background: p.accentSoft,
                   fontSize: "0.7rem", color: p.accent,
-                  fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600,
+                  fontFamily: "'Kalam', cursive", fontWeight: 600,
                 }}>
                   Full lesson content coming soon
                 </div>
@@ -784,8 +782,8 @@
           }}>
             <button onClick={() => onNavigate("home")} style={{
               background: COLORS.surface, border: `1px solid ${COLORS.border}`,
-              color: COLORS.textSoft, padding: "0.55rem 1.1rem", borderRadius: 10,
-              fontSize: "0.78rem", fontFamily: "'Space Grotesk', sans-serif",
+              color: COLORS.textSoft, padding: "0.55rem 1.1rem", borderRadius: 0,
+              fontSize: "0.78rem", fontFamily: "'Kalam', cursive",
               cursor: "pointer", boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
             }}>
               ← All Projects
@@ -798,8 +796,8 @@
                 <button onClick={() => onNavigate(next.id)} style={{
                   background: next.accentSoft,
                   border: `1px solid ${next.accent}25`,
-                  color: next.accent, padding: "0.55rem 1.1rem", borderRadius: 10,
-                  fontSize: "0.78rem", fontFamily: "'Space Grotesk', sans-serif",
+                  color: next.accent, padding: "0.55rem 1.1rem", borderRadius: 0,
+                  fontSize: "0.78rem", fontFamily: "'Kalam', cursive",
                   cursor: "pointer", fontWeight: 600,
                 }}>
                   Next: {next.title} →
@@ -821,11 +819,11 @@
 
       return (
         <div style={{
-          background: COLORS.bg, color: COLORS.text, minHeight: "100vh",
-          fontFamily: "'Space Grotesk', sans-serif",
+          background: "transparent", color: COLORS.text, minHeight: "100vh",
+          fontFamily: "'Kalam', cursive",
         }}>
           <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Covered+By+Your+Grace&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Mono&family=Rock+Salt&display=swap"
             rel="stylesheet"
           />
           <style>{`

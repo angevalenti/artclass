@@ -1,0 +1,294 @@
+/* ══════════════════════════════════════════════════════════════
+   SKETCHBOOK — shared design system for the whole artclass site
+   Linked from every page. Fonts are loaded per page from Google:
+   Kalam 400/700 · Rock Salt · Space Mono
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ink:    #111111;   /* text, borders, doodles        */
+  --char:   #3A3A3A;   /* doodle underlines, 2nd marks  */
+  --ink2:   #6B6B6B;   /* supporting text               */
+  --paper:  #F6F4EF;   /* page background               */
+  --grid:   #E4E1DA;   /* graph paper rule              */
+  --white:  #FFFFFF;   /* cards                         */
+  --warm:   #ECE9E2;   /* alternate cards               */
+  --pink:   #FF6FAE;   /* pop — drawing / painting      */
+  --yellow: #FFE14D;   /* pop — name-strip tape (global) */
+  --orange: #FF9F45;   /* pop — 3D Art                   */
+  --gold:   #F5C518;   /* pop — Honors 3D Art            */
+  --dash:   #CFCBC2;   /* dashed dividers               */
+
+  --accent: var(--pink);          /* per-page course colour */
+  --hand:   'Kalam', cursive;
+  --scrawl: 'Rock Salt', cursive;
+  --label:  'Space Mono', monospace;
+}
+
+.c-pink   { --accent: var(--pink); }
+.c-orange { --accent: var(--orange); }
+.c-honors { --accent: var(--gold); }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+a { color:inherit; }
+img, svg { max-width:100%; }
+
+body {
+  font-family:var(--hand); color:var(--ink); font-size:18px; line-height:1.45;
+  overflow-x:hidden; background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:28px 28px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+.mono { font-family:var(--label); }
+
+/* ── Hand-drawn doodle overlays ── */
+svg.dd { position:absolute; pointer-events:none; overflow:visible; max-width:none; }
+svg.dd path { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ══ NAV ══════════════════════════════════════════════════════ */
+nav { padding:22px 0; }
+nav .wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.brand { font-family:var(--scrawl); font-size:1rem; text-decoration:none; }
+nav ul { list-style:none; display:flex; gap:10px; flex-wrap:wrap; }
+.tab, .site-nav a, .top-nav a, .bottom-nav a {
+  font-family:var(--label); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em;
+  text-decoration:none; padding:6px 12px; border:1.5px solid var(--ink); background:var(--paper);
+  display:inline-block;
+}
+.tab:hover, .site-nav a:hover, .top-nav a:hover, .bottom-nav a:hover { background:var(--ink); color:var(--paper); }
+.site-nav a.active { background:var(--accent); }
+
+/* Course-page header */
+.site-header { padding:22px 0; max-width:1120px; margin:0 auto; padding-left:24px; padding-right:24px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.site-header .logo { font-family:var(--scrawl); font-size:1rem; text-decoration:none; }
+.site-header .logo span { display:inline; }
+.site-nav { list-style:none; display:flex; gap:10px; flex-wrap:wrap; }
+
+/* Week-page nav strips */
+.top-nav, .bottom-nav { max-width:1120px; margin:0 auto; padding:22px 24px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.page-label, .next-label { font-family:var(--label); font-size:.72rem; text-transform:uppercase;
+  letter-spacing:.14em; color:var(--ink2); }
+
+/* ══ HERO ═════════════════════════════════════════════════════ */
+.hero { padding:56px 0 30px; position:relative; }
+.tape, .hero-eyebrow, .phase-tag {
+  display:inline-block; background:var(--yellow); color:var(--ink); padding:4px 14px;
+  transform:rotate(-2deg); font-family:var(--label); font-size:.75rem;
+  letter-spacing:.12em; text-transform:uppercase;
+}
+.hero h1, .hero-content h1 {
+  font-weight:700; font-size:clamp(3rem,8vw,6rem); line-height:.98; margin-top:22px; max-width:860px;
+}
+.hero h1 em, .hero-content h1 em { font-style:normal; color:var(--ink); position:relative; display:inline-block; }
+.hero p, .hero-content p, .subtitle { margin-top:20px; font-size:1.25rem; max-width:620px; color:var(--ink2); }
+.hero .note { position:absolute; right:30px; top:70px; font-family:var(--scrawl); font-size:.95rem;
+  color:var(--char); transform:rotate(6deg); width:200px; text-align:center; }
+.hero .note svg.dd { position:static; display:block; margin:6px auto 0; width:80px; height:60px; }
+.hero-content { max-width:1120px; margin:0 auto; padding:0 24px; }
+
+/* ══ TRACKS (home page) ═══════════════════════════════════════ */
+.track { padding:34px 0 10px; }
+.track .kicker { font-family:var(--label); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink2); }
+.track > h2 { font-weight:700; font-size:2.2rem; line-height:1; display:inline-block;
+  position:relative; margin:6px 0 26px; }
+.courses { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));
+  gap:40px; align-items:start; }
+
+/* ══ COURSE CARD ══════════════════════════════════════════════ */
+.page { background:var(--white); border:2px solid var(--ink); padding:30px 28px 26px;
+  position:relative; box-shadow:8px 8px 0 var(--accent); }
+.page.soon { border-style:dashed; }
+.page .tag, .unit-range, .detail-label, .img-label, .video-label, .phase-label {
+  font-family:var(--label); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink2); }
+.page h2 { font-weight:700; font-size:2.6rem; line-height:1; margin:8px 0 6px;
+  position:relative; display:inline-block; }
+.page .sub { color:var(--ink2); }
+.soonnote { border-top:1.5px dashed var(--dash); margin-top:4px; padding:18px 0 6px;
+  color:var(--ink2); font-size:1rem; }
+
+/* ── Buttons ── */
+.btns { display:flex; gap:10px; margin:18px 0 22px; flex-wrap:wrap; }
+.btns a, .back {
+  font-family:var(--label); font-size:.75rem; text-transform:uppercase; letter-spacing:.06em;
+  text-decoration:none; padding:8px 12px; border:1.5px solid var(--ink);
+  background:var(--white); color:var(--ink); display:inline-block;
+}
+.btns a.pop { background:var(--accent); color:var(--ink); border-color:var(--ink); }
+.btns a:hover, .back:hover { background:var(--ink); color:var(--paper); }
+
+/* ── Scrawled link ── */
+.hub, .video-ref {
+  display:block; margin-top:20px; text-decoration:none; font-family:var(--scrawl);
+  font-size:.95rem; color:var(--ink); width:fit-content;
+  border-bottom:4px solid var(--accent); padding-bottom:2px;
+}
+
+/* ══ UNIT ROWS ════════════════════════════════════════════════ */
+.units { list-style:none; }
+.units li { display:grid; grid-template-columns:44px 1fr auto; gap:4px 12px;
+  padding:12px 0; border-top:1.5px dashed var(--dash); }
+.units .n, .unit-num, .step-num, .week-big, .big-label {
+  font-family:var(--scrawl); color:var(--ink); width:36px; height:36px; display:grid;
+  place-items:center; font-size:.85rem; margin-top:2px; transform:rotate(-3deg);
+  box-shadow:1px 2px 0 rgba(0,0,0,.12); background:var(--accent); flex:none;
+}
+.units li:nth-child(even) .n,
+.step-cards > *:nth-child(even) .step-num { transform:rotate(2.5deg); }
+.units h3, .unit-title, .card-title, .step-text b { font-weight:700; font-size:1.25rem; line-height:1.15; }
+.units .p, .card-desc, .step-text, .phase-content p, .hero-desc { font-size:.98rem; color:var(--ink2); }
+.units .wk { font-family:var(--label); font-size:.72rem; color:var(--ink2);
+  white-space:nowrap; padding-top:6px; }
+
+/* ══ COURSE OVERVIEW (week grid) ══════════════════════════════ */
+.unit-section { max-width:1120px; margin:0 auto; padding:34px 24px 10px; }
+.unit-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+.unit-info { display:flex; flex-direction:column; gap:2px; }
+.weeks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr)); gap:28px; }
+.week-card { display:block; text-decoration:none; background:var(--white);
+  border:2px solid var(--ink); box-shadow:8px 8px 0 var(--accent); }
+a.week-card:hover { box-shadow:4px 4px 0 var(--accent); }
+.card-image, .img-placeholder, .hero-image, .phase-image, .video-wrapper, .video-embed {
+  background:var(--warm); border-bottom:2px solid var(--ink); min-height:150px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  position:relative; }
+.placeholder { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.placeholder-text, .placeholder-msg { font-family:var(--label); font-size:.68rem;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--ink2); text-align:center; padding:0 10px; }
+.card-body { padding:20px 18px; }
+.card-tags, .tools-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.card-tags .tag, .tools-list .tool-chip { font-family:var(--label); font-size:.66rem;
+  text-transform:uppercase; letter-spacing:.06em; padding:4px 8px;
+  border:1.5px solid var(--ink); background:var(--white); }
+
+/* ══ ACCORDION ════════════════════════════════════════════════ */
+.accordion-item { border:2px solid var(--ink); background:var(--white); margin-bottom:14px; }
+.accordion-trigger { display:flex; justify-content:space-between; align-items:center; gap:12px;
+  width:100%; padding:16px 18px; background:none; border:0; cursor:pointer;
+  font-family:var(--hand); font-weight:700; font-size:1.1rem; text-align:left; color:var(--ink); }
+.accordion-content { padding:0 18px 18px; color:var(--ink2); font-size:.98rem; }
+.chevron { font-family:var(--label); font-size:.8rem; }
+
+/* ══ SPOTLIGHT ════════════════════════════════════════════════ */
+.spotlight { max-width:1120px; margin:0 auto; padding:34px 24px; }
+.spotlight-rail { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:24px; }
+.spotlight-card { background:var(--white); border:2px solid var(--ink);
+  box-shadow:8px 8px 0 var(--accent); padding:22px 20px; }
+
+/* ══ WEEK LESSON PAGE ═════════════════════════════════════════ */
+.lesson-hero { max-width:1120px; margin:0 auto; padding:30px 24px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:34px; align-items:start; }
+.phase { max-width:1120px; margin:0 auto; padding:30px 24px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:34px; align-items:start; }
+.phase.reversed .phase-image { order:-1; }
+.step-cards { display:grid; gap:14px; margin-top:16px; }
+.step-card { display:flex; gap:14px; align-items:flex-start; background:var(--white);
+  border:2px solid var(--ink); padding:16px 16px; box-shadow:5px 5px 0 var(--accent); }
+.step-icon { font-size:1.3rem; }
+.detail-strip { max-width:1120px; margin:0 auto; padding:20px 24px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr)); gap:18px; }
+.detail-cell { background:var(--white); border:2px solid var(--ink); padding:16px 16px; }
+.detail-big { font-weight:700; font-size:1.5rem; line-height:1.1; margin-top:4px; }
+.video-text { color:var(--ink2); font-size:.98rem; }
+
+/* ══ RESOURCE STICKIES ════════════════════════════════════════ */
+.res { padding-top:40px; }
+.res h2 { font-weight:700; font-size:2.6rem; display:inline-block; position:relative; margin-bottom:24px; }
+.stickies { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));
+  gap:24px; padding-bottom:40px; }
+.sticky { padding:22px 20px; min-height:170px; display:flex; flex-direction:column; gap:4px;
+  box-shadow:0 6px 14px rgba(0,0,0,.08); border:1.5px solid var(--char); background:var(--white); }
+.sticky:nth-child(even) { background:var(--warm); }
+.sticky:nth-child(4n+1) { transform:rotate(-1.5deg); }
+.sticky:nth-child(4n+2) { transform:rotate(1deg); }
+.sticky:nth-child(4n+3) { transform:rotate(-.6deg); }
+.sticky:nth-child(4n)   { transform:rotate(1.4deg); }
+.sticky b { font-size:1.25rem; line-height:1.15; }
+.sticky span { color:var(--ink2); font-size:.98rem; }
+.sticky .l { margin-top:auto; display:flex; gap:14px; }
+.sticky .l a { font-family:var(--label); font-size:.75rem; text-transform:uppercase; }
+
+/* ══ STUB "COMING SOON" PAGES ═════════════════════════════════ */
+.stub { min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center; padding:4rem 1.5rem 2.5rem; }
+.stub .eyebrow { font-family:var(--scrawl); font-size:.95rem; color:var(--char); margin-bottom:14px; }
+.stub h1 { font-weight:700; font-size:clamp(2.4rem,7vw,3.6rem); line-height:1.02;
+  margin-bottom:16px; position:relative; display:inline-block; }
+.stub .badge { display:inline-block; background:var(--accent); color:var(--ink);
+  font-family:var(--label); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 14px; transform:rotate(-2deg); margin-bottom:26px; }
+.stub p { color:var(--ink2); max-width:30rem; margin:0 auto 32px; }
+
+/* ══ CLASSROOM RULES ══════════════════════════════════════════ */
+.rules-container { max-width:1120px; margin:0 auto; padding:40px 24px 60px; }
+.rules-container .header { margin-bottom:34px; }
+.rules-container .header h1 { font-weight:700; font-size:clamp(2.4rem,6vw,3.4rem); line-height:1.02; }
+.rules-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:28px; }
+.rule-card { background:var(--white); border:2px solid var(--ink); padding:24px 22px;
+  box-shadow:8px 8px 0 var(--accent); }
+.rule-card h2 { font-weight:700; font-size:1.5rem; line-height:1.15; margin-bottom:10px;
+  display:flex; align-items:center; gap:10px; }
+.rule-content { color:var(--ink2); font-size:.98rem; }
+.rule-content p + p { margin-top:10px; }
+.emoji { font-size:1.4rem; }
+.checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));
+  gap:28px; margin-top:52px; }
+.checklist-section { background:var(--white); border:2px solid var(--ink); padding:24px 22px;
+  box-shadow:8px 8px 0 var(--accent); }
+.checklist-section h2, .checklist-section h3 { font-weight:700; font-size:1.4rem; margin-bottom:12px; }
+.checklist-item { display:flex; gap:10px; align-items:flex-start; padding:9px 0;
+  border-top:1.5px dashed var(--dash); color:var(--ink2); font-size:.98rem; }
+.checklist-section > .checklist-item:first-of-type { border-top:0; }
+
+/* ══ FOOTER ═══════════════════════════════════════════════════ */
+footer { text-align:center; padding:48px 0 60px; font-family:var(--scrawl); font-size:.95rem; }
+
+/* ══ PHONE ════════════════════════════════════════════════════ */
+@media (max-width:760px) {
+  .hero .note { display:none; }
+  .page, .week-card, .spotlight-card, .rule-card, .checklist-section { box-shadow:5px 5px 0 var(--accent); }
+  .page { padding:24px 20px; }
+  .page h2 { font-size:2.2rem; }
+  .track > h2 { font-size:1.9rem; }
+  .site-header, .top-nav, .bottom-nav { padding-top:16px; padding-bottom:16px; }
+}
+
+/* ── Course-colour aliases used by existing markup ── */
+.va { --accent: var(--pink); }    /* Visual Art / Foundations */
+.td { --accent: var(--orange); }  /* 3D Art                   */
+.hn { --accent: var(--gold); }    /* Honors 3D Art            */
+
+/* ══ HONORS MARKER ════════════════════════════════════════════ */
+.tape-honors {
+  display:inline-block; background:var(--ink); color:var(--paper);
+  font-family:var(--label); font-size:.68rem; letter-spacing:.18em;
+  text-transform:uppercase; padding:4px 14px; transform:rotate(-2deg);
+  margin-bottom:10px;
+}
+
+/* ══ "HONORS GOES DEEPER" — placeholder for Ms. Valenti ═══════ */
+.deeper {
+  grid-column:2 / -1; margin-top:9px; padding:9px 11px;
+  border:1.5px dashed var(--char); background:var(--warm);
+}
+.deeper .deeper-label {
+  display:block; font-family:var(--label); font-size:.62rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink); margin-bottom:3px;
+}
+.deeper .todo { color:var(--ink2); font-size:.92rem; font-style:italic; }
+
+/* ══ REDIRECT SHIM ════════════════════════════════════════════ */
+.redirect { min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center; padding:4rem 1.5rem; gap:16px; }
+.redirect p { color:var(--ink2); max-width:28rem; }
+
+/* Three-up course grid (home page) */
+.courses.three { grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); }
