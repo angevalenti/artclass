@@ -315,3 +315,28 @@ details.unit-section[open] > summary.unit-header { margin-bottom:26px; }
 .unit-toggle { margin-left:auto; font-family:var(--label); font-size:1rem;
   display:inline-block; transition:transform .2s ease; }
 details.unit-section[open] .unit-toggle { transform:rotate(180deg); }
+
+/* ══ LESSON ACCORDIONS (inside a unit) ════════════════════════ */
+.lessons { display:flex; flex-direction:column; gap:10px; }
+details.lesson { border:2px solid var(--ink); background:var(--white);
+  box-shadow:4px 4px 0 var(--accent); }
+details.lesson > summary.lesson-head {
+  display:flex; align-items:center; gap:12px; cursor:pointer;
+  list-style:none; padding:12px 14px;
+}
+details.lesson > summary.lesson-head::-webkit-details-marker { display:none; }
+details.lesson > summary.lesson-head::marker { content:''; }
+details.lesson > summary.lesson-head:hover { background:var(--warm); }
+.lesson-num { font-family:var(--scrawl); font-size:.78rem; width:32px; height:32px;
+  display:grid; place-items:center; background:var(--accent); flex:none;
+  transform:rotate(-3deg); box-shadow:1px 2px 0 rgba(0,0,0,.12); }
+details.lesson:nth-child(even) .lesson-num { transform:rotate(2.5deg); }
+.lesson-title { font-weight:700; font-size:1.08rem; line-height:1.2; }
+.lesson-toggle { margin-left:auto; font-family:var(--label); font-size:.9rem;
+  display:inline-block; transition:transform .2s ease; }
+details.lesson[open] .lesson-toggle { transform:rotate(180deg); }
+.lesson-body { padding:14px 14px 16px; border-top:1.5px dashed var(--dash); }
+.lesson-body .card-image { min-height:130px; border:2px solid var(--ink);
+  margin-bottom:12px; }
+.lesson-body .card-desc { margin-bottom:10px; }
+.lesson-body .deck-link { margin-top:12px; }
