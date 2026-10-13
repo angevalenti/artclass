@@ -300,3 +300,18 @@ footer { text-align:center; padding:48px 0 60px; font-family:var(--scrawl); font
 .deck-link { margin-top:12px; font-family:var(--scrawl); font-size:.8rem;
   color:var(--ink); border-bottom:4px solid var(--accent); display:inline-block;
   padding-bottom:2px; }
+
+/* ══ UNIT ACCORDIONS (course overview) ════════════════════════ */
+details.unit-section > summary.unit-header {
+  display:flex; align-items:center; gap:14px; cursor:pointer;
+  list-style:none; margin-bottom:0;
+  background:var(--white); border:2px solid var(--ink);
+  padding:14px 18px; box-shadow:5px 5px 0 var(--accent);
+}
+details.unit-section > summary.unit-header::-webkit-details-marker { display:none; }
+details.unit-section > summary.unit-header::marker { content:''; }
+details.unit-section > summary.unit-header:hover { background:var(--warm); }
+details.unit-section[open] > summary.unit-header { margin-bottom:26px; }
+.unit-toggle { margin-left:auto; font-family:var(--label); font-size:1rem;
+  display:inline-block; transition:transform .2s ease; }
+details.unit-section[open] .unit-toggle { transform:rotate(180deg); }
